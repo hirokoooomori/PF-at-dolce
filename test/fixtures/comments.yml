@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop_id: 1
+  customer_id: 
+  comment: MyString
+  created_at: 2021-09-08 08:25:08
+  updated_at: 2021-09-08 08:25:08
+
+two:
+  shop_id: 1
+  customer_id: 
+  comment: MyString
+  created_at: 2021-09-08 08:25:08
+  updated_at: 2021-09-08 08:25:08

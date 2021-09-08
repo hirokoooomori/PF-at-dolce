@@ -1,0 +1,2 @@
+class AtmospheresController < ApplicationController
+end
