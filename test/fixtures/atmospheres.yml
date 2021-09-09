@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  atmosphere: MyString
+  created_at: 2021-09-08 08:22:58
+  updated_at: 2021-09-08 08:22:58
+
+two:
+  atmosphere: MyString
+  created_at: 2021-09-08 08:22:58
+  updated_at: 2021-09-08 08:22:58

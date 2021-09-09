@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  comment_id: 1
+  genre_id: 1
+  name: MyString
+  image_id: MyString
+  business_day: MyString
+  eat_in: MyString
+  take_out: MyString
+  budget: MyString
+  google_map_id: MyText
+  created_at: 2021-09-08 08:09:13
+  update_at: 2021-09-08 08:09:13
+
+two:
+  product_id: 1
+  comment_id: 1
+  genre_id: 1
+  name: MyString
+  image_id: MyString
+  business_day: MyString
+  eat_in: MyString
+  take_out: MyString
+  budget: MyString
+  google_map_id: MyText
+  created_at: 2021-09-08 08:09:13
+  update_at: 2021-09-08 08:09:13
