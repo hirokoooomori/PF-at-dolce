@@ -73,3 +73,5 @@ gem "refile-mini_magick"
 end
 
 gem 'devise'
+gem 'bootstrap'
+gem 'kaminari'
