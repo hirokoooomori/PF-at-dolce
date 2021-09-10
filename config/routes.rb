@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
 
   namespace :admin do
+    get 'homes/top' => 'homes#top'
+    
     resources :products
     resources :shops
     resources :customers
@@ -26,7 +28,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get 'homes/top'
-    
+    post 'homes/top' => 'homes#top'
     root to: 'homes#top'
   end
 
