@@ -1,0 +1,65 @@
+<h3>ジャンル一覧</h3>
+
+<div class=”container”>
+  <div class="row">
+    <div class="col-md-4">
+      <tbody>
+        <%= form_with model: @area, url: admin_genres_path, local: true do |f| %>
+        <%= f.text_field :name, placeholder: "エリア名" %>
+        <%= f.submit '新規登録', class: 'btn btn-success '%>
+        <% end %>
+        <div class="col">
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>エリア</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @areas.each do |area| %>
+        <tr>
+          <th><u><%= link_to area.name, admin_genres_path, class: "text-dark" %></u></th>
+        </tr>
+      </tbody>
+        <% end %>
+    </table>
+    </div>
+      </tbody>
+    </div>
+
+    <div class="col-md-4">
+      <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
+      <tbody>
+        <th><%= f.text_field :name, placeholder: "雰囲気ジャンル名" %></th>
+        <th><%= f.submit '新規登録', class: 'btn btn-success '%></th>
+      </tbody>
+      <% end %>
+      <div class="col">
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>雰囲気</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @atmospheres.each do |atmosphere| %>
+        <tr>
+          <th><u><%= link_to atmosphere.name, admin_genres_path, class: "text-dark" %></u></th>
+        </tr>
+      </tbody>
+        <% end %>
+    </table>
+    </div>
+    </div>
+    
+    <div class="col-md-4">
+      <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
+      <tbody>
+        <th><%= f.text_field :name, placeholder: "商品ジャンル名" %></th>
+        <th><%= f.submit '新規登録', class: 'btn btn-success '%></th>
+      </tbody>
+      <% end %>
+    </div>
+  </div>
+</div>
