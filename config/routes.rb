@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top' => 'homes#top'
-    
+
     resources :products
     resources :shops
     resources :customers
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
   end
 
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
