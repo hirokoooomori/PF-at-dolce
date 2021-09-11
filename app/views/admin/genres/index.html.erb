@@ -13,7 +13,6 @@
       <thead>
         <tr>
           <th>エリア</th>
-          <th></th>
         </tr>
       </thead>
 
@@ -36,9 +35,25 @@
         <th><%= f.submit '新規登録', class: 'btn btn-success '%></th>
       </tbody>
       <% end %>
+      <div class="col">
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>雰囲気</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @atmospheres.each do |atmosphere| %>
+        <tr>
+          <th><u><%= link_to atmosphere.name, admin_genres_path, class: "text-dark" %></u></th>
+        </tr>
+      </tbody>
+        <% end %>
+    </table>
     </div>
+    </div>
+    
     <div class="col-md-4">
-
       <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
       <tbody>
         <th><%= f.text_field :name, placeholder: "商品ジャンル名" %></th>
