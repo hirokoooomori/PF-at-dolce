@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_12_045030) do
+ActiveRecord::Schema.define(version: 2021_09_11_145622) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_09_12_045030) do
   end
 
   create_table "shops", force: :cascade do |t|
+    t.integer "product_id"
     t.integer "comment_id"
     t.string "name"
     t.string "image_id"
@@ -136,9 +137,9 @@ ActiveRecord::Schema.define(version: 2021_09_12_045030) do
     t.text "google_map_id"
     t.datetime "created_at", null: false
     t.datetime "update_at"
-    t.datetime "updated_at", null: false
     t.integer "area_id"
     t.integer "atmosphere_id"
+    t.datetime "updated_at", null: false
   end
 
 end

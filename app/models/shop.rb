@@ -5,6 +5,7 @@ class Shop < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   belongs_to :area
-  belongs_to:atmosphere
+  belongs_to :atmosphere
   has_many :shop_genres, dependent: :destroy
+  attachment :image
 end
