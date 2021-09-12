@@ -5,6 +5,8 @@ class Admin::GenresController < ApplicationController
     @area = Area.new
     @atmospheres =Atmosphere.all
     @atmosphere = Atmosphere.new
+    @genres = Genre.all
+    @genre = Genre.new
   end
 
   def new
@@ -12,22 +14,36 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
-    @area = Area.new(area_params)
-    @area.save
+    if params[:area].present?
+      @area = Area.new(area_params)
+      @area.save
     redirect_to request.referer
-    @atmosphere = Atmosphere.new(atmosphere_params)
-    @atmosphere.save
-    redirect_to request.reterer
+    elsif params[:atmosphere].present?
+      @atmosphere = Atmosphere.new(atmosphere_params)
+      @atmosphere.save
+      redirect_to request.referer
+    else
+      @genre = Genre.new(genre_params)
+      @genre.save
+      redirect_to request.referer
+    end
   end
 
+end
+
   private
+
 
   def area_params
     params.require(:area).permit(:name)
   end
 
   def atmosphere_params
-    params.require(:atmosphere).permit(:name)
+    params.require(:atmosphere).permit(:atmosphere)
   end
 
-end
+  def genre_params
+    params.require(:genre).permit(:name)
+  end
+
+
