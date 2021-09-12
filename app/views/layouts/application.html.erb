@@ -7,9 +7,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
+ <header>
   <body>
     <% if customer_signed_in? %>
     <div>
@@ -50,7 +51,15 @@
       </ul>
 
      <% end %>
-
+     </header>
+     <% if flash[:notice] %>
+        <div class="alert alert-primary text-center" role="alert"><strong><%= notice %></strong></div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger text-center" role="alert"><strong><%= alert %></strong></div>
+      <% end %>
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>

@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     resources :contacts
     resources :faqs
   end
+  
+  resources :admin, only: [:index, :new, :create, :show] do
+    collection do
+      post :confirm
+    end
+  end
 
   devise_scope :admin do
     get '/admins/sign_in' => 'admins/sessions#new'
