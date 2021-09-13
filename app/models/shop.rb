@@ -8,4 +8,7 @@ class Shop < ApplicationRecord
   belongs_to :atmosphere
   has_many :shop_genres, dependent: :destroy
   attachment :image
+  
+  
+  
 end
