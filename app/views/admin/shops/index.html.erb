@@ -1,34 +1,24 @@
 <h3>店舗一覧</h3>
-<div class="text-right"><%= button_to "店舗新規登録", {controller: 'shops', action: 'new'},{method: :get} %></div>
-
-<h3 class="text-center">
-					<p><span>店舗一覧</span>(全<%= @shops.count %>件)</p>
-				</h3>
-			</div>
-		</div>
-		<div class="row products">
+  <div style="text-align: right"><%= button_to "店舗新規登録", {controller: 'shops', action: 'new'},{method: :get} %></div>
+  <p>(全<%= @shops.count %>件)</p>
+		<div class="d-flex flex-wrap">
 			<% @shops.each do |shop| %>
-			  <div class="row">
-		      <div class="col-lg-10">
-
-                <%= link_to admin_shop_path(shop.id), class: "btn-link" do %>
-                  <%= attachment_image_tag shop, :image, format: 'jpeg', size: "300x220" %>
-                  <%# カラムはimage_idだがrefileの仕様でidは書かない %>
-                <% end %>
-
-            <div class="row">
-              <div class="col-lg-10">
-                <h5><span>店名<a>  </a><%= shop.name %></span></h5>
-                <p>営業日<a>  </a><%= shop.business_day %></p>
-                <p>予算<a>  </a><%= shop.budget %></p>
-              </div>
+			  <div class="m-3">
+          <%= link_to admin_shop_path(shop.id), class: "btn-link" do %>
+            <%= attachment_image_tag shop, :image, format: 'jpeg', size: "300x220" %>
+            <%# カラムはimage_idだがrefileの仕様でidは書かない %>
+          <% end %>
+            <div>
+              <h5><span>店名<a>  </a><%= shop.name %></span>
+              <%#= button_to "編集", {controller: 'shops', action: 'update'},{method: :get} %>
+              <%= link_to "編集", edit_admin_shop_path(shop), class: "btn btn-outline-primary" %>
+              <%= link_to " 削除", admin_shop_path(shop), method: :delete, remote: true, data: {confirm: "#{shop.name}を削除しますか？"}, class: "btn btn-danger" %>
+              </h5>
+              <p>営業日<a>  </a><%= shop.business_day %></p>
+              <p>予算<a>  </a><%= shop.budget %></p>
             </div>
-            <div class="row">
-              <div class="col-lg-10 ">
-
-                <% end %>
-              </div>
-            </div>
-          </div>
         </div>
+      <% end %>
+    </div>
+  </div>
 

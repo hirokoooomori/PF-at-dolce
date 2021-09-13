@@ -17,9 +17,26 @@ class Admin::ShopsController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    @shop = Shop.find(params[:id])
+  end
+
+  def update
+    @shop = Shop.find(params[:id])
+    @shop.update(shop_params)
+    redirect_to admin_shops_path, notice: "更新しました"
+  end
+
+  def destroy
+    @shop = Shop.find(params[:id])
+    @shop.destroy
+
+    redirect_to admin_shops_path, notice: "削除しました"
+  end
 
 end
 
 def shop_params
-  params.require(:shop).permit(:name, :image, :business_day, :budget, :area_id, :atmosphere_id, :atmosphere)
+  params.require(:shop).permit(:name, :image, :business_day, :budget, :area_id, :atmosphere_id, :atmosphere, :take_out, :eat_in)
 end
