@@ -12,7 +12,7 @@
 
  <header>
   <body>
-    <% if customer_signed_in? %>
+    <%# if customer_signed_in? %>
     <div>
       <ul>
         <li>
@@ -24,7 +24,7 @@
       </ul>
     </div>
 
-    <% elsif admin_signed_in? %>
+    <%# elsif admin_signed_in? %>
 
     <div>
       <ul>
@@ -35,12 +35,18 @@
           <%= link_to "会員一覧", admin_customers_path, class: ''%>
         </li>
         <li>
+          <%= link_to "店舗管理", admin_shops_path, class: '' %>
+        </li>
+        <li>
+          <%= link_to "ジャンル管理", admin_genres_path, class: '' %>
+        </li>
+        <li>
           <%= link_to "ログアウト", admins_sign_out_path, method: :delete, class: ''%>
         </li>
       </ul>
      </div>
 
-     <% else %>
+     <%# else %>
      <ul>
         <li>
           <%= link_to " 新規登録", new_customer_registration_path, class: ''%>
@@ -50,7 +56,7 @@
         </li>
       </ul>
 
-     <% end %>
+     <%# end %>
      </header>
      <% if flash[:notice] %>
         <div class="alert alert-primary text-center" role="alert"><strong><%= notice %></strong></div>

@@ -1,0 +1,26 @@
+<h3>店舗商品一覧</h3>
+  <div style="text-align: right"><%= button_to "商品新規登録", {controller: 'products', action: 'new'},{method: :get} %></div>
+  <p>(全<%= @products.count %>件)</p>
+		<div class="d-flex flex-wrap">
+			<% @products.each do |product| %>
+			  <div class="m-3">
+
+
+          <%= attachment_image_tag(product, :image, size: "350x230" ) %>
+          <%# カラムはimage_idだがrefileの仕様でidは書かない %>
+            <div>
+              <p>商品名<a>  <%= product.name %></a>
+              <%#= button_to "編集", {controller: 'shops', action: 'update'},{method: :get} %>
+              <%#= link_to "編集", edit_admin_shop_product_path(shop_id: product.shop_id, id: product.id), class: "btn btn-outline-primary" %>
+              <%= link_to " 削除", admin_shop_product_path(shop_id: product.shop_id, id: product.id), method: :delete, remote: true, data: {confirm: "#{product.name}を削除しますか？"}, class: "btn btn-danger" %>
+              </p>
+              <p></p>
+              <p>店名<a>  </a><%#= product.shop.name %></p>
+            </div>
+        </div>
+      <% end %>
+      
+    </div>
+    
+    <%= button_to "店舗一覧へ戻る", {controller: 'shops', action: 'index'},{method: :get} %>
+  </div>

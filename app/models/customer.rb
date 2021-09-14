@@ -10,5 +10,6 @@ class Customer < ApplicationRecord
   has_many :candidates, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :scores, dependent: :destroy
+  has_many :revies, dependent: :destroy
 
 end
