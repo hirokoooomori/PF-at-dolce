@@ -4,6 +4,26 @@
   <table class="table">
 
     <tr>
+      <!-- 評価 -->
+  <div class="form-group row" id="star">
+    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+  <!-- 評価javascript -->
+  <script src="../../assets/javascripts/application.js">
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'post[rate]',
+      half: true,
+    });
+  </script>
+    </tr>
+
+    <tr>
       <td>店舗名</td>
       <td><%= f.text_field :name %></td>
     </tr>
@@ -21,8 +41,8 @@
     <tr>
       <td>販売形式</td>
       <td>
-        <a><input type="checkbox" name="eat_in" value="1">イートイン</a>
-        <a><input type="checkbox" name="take_out" value="1">テイクアウト</a>
+        <a><input type="checkbox" name="status" value="1">イートイン</a>
+        <a><input type="checkbox" name="status" value="1">テイクアウト</a>
       </td>
     </tr>
 
@@ -50,3 +70,4 @@
   <% end %>
   </div>
 </div>
+

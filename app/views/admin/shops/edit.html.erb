@@ -1,0 +1,58 @@
+<div><h3>店舗編集</h3></div>
+
+<%= form_with model: @shop, url: admin_shop_path(@shop), local: true do |f| %>
+  <table class="table">
+
+    <tr>
+      <td>店舗名</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+
+    <tr>
+      <td>店舗画像</td>
+      <td><%= attachment_image_tag @shop, :image, format: 'jpeg', size: "300x220" %></td>
+
+    </tr>
+
+    <tr>
+      <td></td>
+      <td><%= f.file_field :image, id: :image_id %></td>
+    </tr>
+
+    <tr>
+      <td>営業日</td>
+      <td><%= f.text_field :business_day %></td>
+    </tr>
+
+    <tr>
+      <td>販売形式</td>
+      <td>
+        <a><input type="checkbox" name="eat_in" value="1">イートイン</a>
+        <a><input type="checkbox" name="take_out" value="1">テイクアウト</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>予算</td>
+      <td><%= f.text_field :budget %>円</td>
+    </tr>
+
+    <tr>
+      <td>エリア</td>
+      <th><%= f.collection_select :area_id, Area.all, :id, :name,{prompt: "選択してください"} %></th>
+    </tr>      <%# Area.allの中から選択したarea_id(ジャンル)に:idでIDを与える %>
+
+    <tr>
+      <td>雰囲気ジャンル</td>
+      <th><%= f.collection_select :atmosphere_id, Atmosphere.all, :id, :atmosphere,{prompt: "選択してください"} %></th>
+    </tr>
+
+  </table>
+
+    <div class="text-center">
+      <br><%= f.submit "更新", class: "btn btn-success" %>
+    </div>
+
+  <% end %>
+  </div>
+</div>

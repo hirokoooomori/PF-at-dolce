@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top' => 'homes#top'
 
-    resources :products
-    resources :shops
+
+    resources :shops do
+      resources :products
+    end
     resources :customers
     resources :genres
     resources :areas
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
     resources :contacts
     resources :faqs
   end
-  
+
   resources :admin, only: [:index, :new, :create, :show] do
     collection do
       post :confirm
@@ -36,6 +38,21 @@ Rails.application.routes.draw do
     get 'homes/top'
     post 'homes/top' => 'homes#top'
     root to: 'homes#top'
+    resources :products
+
+    resources :shops do
+      resources :reviews, only: [:index, :create]
+    end
+
+    resources :customers
+    resources :genres
+    resources :areas
+    resources :atmospheres
+    resources :scores
+    resources :comments
+    resources :contacts
+    resources :faqs
+
   end
 
 

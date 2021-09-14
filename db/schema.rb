@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_11_145622) do
+ActiveRecord::Schema.define(version: 2021_09_14_081123) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -103,6 +103,19 @@ ActiveRecord::Schema.define(version: 2021_09_11_145622) do
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shop_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "shop_id"
+    t.string "comment"
+    t.integer "score"
+    t.integer "shop__id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_reviews_on_customer_id"
+    t.index ["shop_id"], name: "index_reviews_on_shop_id"
   end
 
   create_table "scores", force: :cascade do |t|
@@ -110,6 +123,8 @@ ActiveRecord::Schema.define(version: 2021_09_11_145622) do
     t.string "five_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "rate", default: 0.0, null: false
+    t.integer "shop_id"
   end
 
   create_table "shop_genre_names", force: :cascade do |t|
@@ -140,6 +155,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_145622) do
     t.integer "area_id"
     t.integer "atmosphere_id"
     t.datetime "updated_at", null: false
+    t.string "status"
   end
 
 end
