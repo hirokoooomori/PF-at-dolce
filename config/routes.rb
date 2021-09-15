@@ -42,16 +42,17 @@ Rails.application.routes.draw do
 
     resources :shops do
       resources :reviews, only: [:index, :create]
+      resources :comments
     end
 
-    resources :customers
-    resources :genres
-    resources :areas
-    resources :atmospheres
-    resources :scores
-    resources :comments
-    resources :contacts
-    resources :faqs
+    # resources :customers
+    # resources :genres
+    # resources :areas
+    # resources :atmospheres
+    # resources :scores
+
+    # resources :contacts
+    # resources :faqs
 
   end
 
