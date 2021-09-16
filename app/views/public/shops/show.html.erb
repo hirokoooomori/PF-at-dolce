@@ -10,7 +10,7 @@
       </td>
       <td><%= attachment_image_tag(comment, :image, size: "350x230") %></td>
       <td><%= comment.comment %></td>
-      <td><%# if comment.customer == current_user %><%= link_to "削除", shop_comment_path(comment), method: :delete %><%# end %></td>
+      <td><%# if comment.customer == current_user %><%= link_to "削除", shop_comment_path(shop_id: comment.shop_id, id: @shop.id), method: :delete %><%# end %></td>
     </tr>
     <%# end %>
     <% end %>
@@ -19,7 +19,7 @@
 <div class="table">
   <%= form_with model:[@shop, @comment], local: true do |f| %>
     <tr>
-      <td>店舗画像</td>
+      <td>店舗画</td>
       <td><%= f.file_field :image %></td>
     </tr>
     <tr>

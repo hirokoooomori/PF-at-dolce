@@ -7,7 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
  <header>
@@ -15,12 +15,9 @@
     <%# if customer_signed_in? %>
     <div>
       <ul>
-        <li>
-          <%#= link_to "マイページ", customer_path(current_customer), class: ''%>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: '' %>
-        </li>
+        <li><%#= link_to "マイページ", customer_path(current_customer), class: ''%></li>
+        <li><%= link_to "店舗一覧", shops_path, class: ''%></li>
+        <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: '' %></li>
       </ul>
     </div>
 

@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-  
+
   def create
     @shop = Shop.find(params[:shop_id])
     comment = Comment.new(comment_params)
@@ -13,10 +13,21 @@ class Public::CommentsController < ApplicationController
     end
   end
 
-  private
-  
-  def comment_params
-    params.require(:comment).permit(:comment, :image_id)
+  def destroy
+    @shop = Shop.find(params[:shop_id])
+    comment = @shop.comments.find(params[:id])
+    
+    if comment.customer != current_customer
+      redirect_to request.referer
+    end
+    comment.destroy
+    redirect_to request.referer
   end
-  
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:comment, :image, :shop_id)
+  end
+
 end
