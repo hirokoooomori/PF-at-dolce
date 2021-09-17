@@ -1,15 +1,16 @@
 class Public::ShopsController < ApplicationController
-  
+
   def index
     @shops = Shop.all
+    #candidate = Candidate.find(params[:id])
   end
-  
+
   def show
     @comment = Comment.new
     @shop = Shop.find(params[:id])
     @comments = @shop.comments.order(created_at: :desc)#:desc = 降順
   end
-  
+
 end
 
   private

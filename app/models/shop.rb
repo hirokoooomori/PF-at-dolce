@@ -9,9 +9,16 @@ class Shop < ApplicationRecord
   has_many :shop_genres, dependent: :destroy
   has_many :revies, dependent: :destroy
   belongs_to :customer, optional: true
+  has_many :customer, through: :favorites
 
   attachment :image
 
+def favorited_by?(customer)
+  favorites.where(customer_id: customer.id).exists?
+end
 
+def candidated_by?(customer)
+  candidates.where(customer_id: customer.id).exists?
+end
 
 end

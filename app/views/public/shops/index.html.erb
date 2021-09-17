@@ -8,26 +8,57 @@
         <h4>店舗一覧</h4>
         <div>
           <% @shops.each do |shop| %>
-			  <div class="">
-			    <div class="col-md-5">
-			      <div class="col-md-5 img-thumbnail shop-image">
-          <%= link_to shop_path(shop), class: "btn-link" do %>
-            <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220" %>
-            <%# カラムはimage_idだがrefileの仕様でidは書かない %>
+          <div class="img-thumbnail">
+  			    <div class="col-md-5">
+  			      <div class="col-md-5 shop-image">
+                <%= link_to shop_path(shop), class: "btn-link" do %>
+                  <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220" %>
+                  <%# カラムはimage_idだがrefileの仕様でidは書かない %>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-md-7 shop-item">
+
+              <%# if current_customer&.like?(shop) %>
+              <% if shop.favorited_by?(current_customer) %>
+                <p style="color: #5A3E26">
+                  <% favorite = shop.favorites.find_by(customer_id: current_customer.id) %>
+                  <%= link_to shop_favorite_path(shop.id, favorite.id), method: :delete do %>
+                    <i class="fas fa-heart" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.favorites.count %></font>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>
+                  <%= link_to shop_favorites_path(shop), method: :post do %>
+                    <i class="far fa-heart" style="color: #5A3E26;"></i><%= shop.favorites.count %>
+                  <% end %>
+                </p>
+              <% end %>
+
+              <%# if current_customer&.like?(shop) %>
+              <% if shop.candidated_by?(current_customer) %>
+                <p>
+                  <% candidate = shop.candidates.find_by(customer_id: current_customer.id) %>
+                  <%= link_to shop_candidate_path(shop.id, candidate.id), method: :delete do %>
+                    <i class="fas fa-bookmark" style="color: #5A3E26;"></i><%= shop.candidates.count %>
+                  <% end %>
+                </p>
+              <% else %>
+                <p>
+                  <%= link_to shop_candidates_path(shop), method: :post do %>
+                    <i class="far fa-bookmark" style="color: #5A3E26;"></i><%= shop.candidates.count %>
+                  <% end %>
+                </p>
+              <% end %>
+
+              <h5><span>店名  <%= shop.name %></span></h5>
+              <p>営業日  <%= shop.business_day %></p>
+              <p>予算  <%= shop.budget %></p>
+              <p>エリア  <%= shop.area.name %></p>
+              <p>店舗ジャンル  <%= shop.atmosphere.atmosphere %></p>
             </div>
             </div>
           <% end %>
-            <div class="col-md-7">
-            <div class="col-md-7 shop-item">
-              <h5><span>店名<a>  </a><%= shop.name %></span></h5>
-              <p>営業日<a>  </a><%= shop.business_day %></p>
-              <p>予算<a>  </a><%= shop.budget %></p>
-              <p>エリア<a>  </a><%= shop.area.name %></p>
-              <p>店舗ジャンル<a>  </a><%= shop.atmosphere.atmosphere %></p>
-            </div>
-            </div>
-        </div>
-      <% end %>
         </div>
       </div>
     </div>

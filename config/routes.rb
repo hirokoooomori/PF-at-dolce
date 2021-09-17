@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     resources :shops do
       resources :reviews, only: [:index, :create]
       resources :comments
+      resources :favorites, only: [:create, :destroy]
+      resources :candidates, only: [:create, :destroy]
     end
 
     # resources :customers

@@ -15,3 +15,25 @@
  */
 
 @import 'bootstrap';
+
+.heaedr_logo {
+ width: 300px;
+ height: 100px;
+}
+
+header {
+  background-color: #986e4e;
+  background-image: linear-gradient(62deg, #986e4e 0%, #5a3e26 100%);
+  color: white;
+  height: 45px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+main {
+  padding-top: 45px;
+}
+
