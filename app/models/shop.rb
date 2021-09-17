@@ -13,6 +13,10 @@ class Shop < ApplicationRecord
 
   attachment :image
 
+def favorited_by?(customer)
+  favorites.where(customer_id: customer.id).exists?
+end
+
 def candidated_by?(customer)
   candidates.where(customer_id: customer.id).exists?
 end
