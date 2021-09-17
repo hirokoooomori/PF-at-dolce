@@ -34,17 +34,18 @@
                 </p>
               <% end %>
 
-              <% if current_customer&.like?(shop) %>
+              <%# if current_customer&.like?(shop) %>
+              <% if shop.candidated_by?(current_customer) %>
                 <p>
                   <% candidate = shop.candidates.find_by(customer_id: current_customer.id) %>
                   <%= link_to shop_candidate_path(shop.id, candidate.id), method: :delete do %>
-                    <i class="fas fa-heart"></i><%= shop.candidates.count %>
+                    <i class="fas fa-star"></i><%= shop.candidates.count %>
                   <% end %>
                 </p>
               <% else %>
                 <p>
                   <%= link_to shop_candidates_path(shop), method: :post do %>
-                    <i class="far fa-heart"></i><%= shop.candidates.count %>
+                    <i class="far fa-star"></i><%= shop.candidates.count %>
                   <% end %>
                 </p>
               <% end %>

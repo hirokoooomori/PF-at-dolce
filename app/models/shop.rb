@@ -13,4 +13,8 @@ class Shop < ApplicationRecord
 
   attachment :image
 
+def candidated_by?(customer)
+  candidates.where(customer_id: customer.id).exists?
+end
+
 end
