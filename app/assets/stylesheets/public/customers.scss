@@ -1,3 +1,55 @@
 // Place all the styles related to the public::customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*ブラウザがデフォルトで持っているCSSを打ち消す*/
+html,body,h1,h2,h3,h4,ul,ol,dl,li,dt,dd,p,div,span,img,a,table,tr,th,td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  font-size: 100%;
+  vertical-align:baseline;
+  list-style: none;
+}
+
+.container {
+  margin: 10px;
+
+}
+
+.tab-list {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
+.tab:first-child {
+  border-left: none;
+}
+
+.tab-active {
+  color: #5a3e26;
+  background: #ffe9e6;
+  transition: all 0.2s ease-in-out;
+}
+
+.tabbox-contents {
+  background: #ffe9e6;
+}
+
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+
+.box-show {
+  display: block;
+}

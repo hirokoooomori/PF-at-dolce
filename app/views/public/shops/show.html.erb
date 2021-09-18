@@ -70,7 +70,7 @@
       </td>
       <td><%= attachment_image_tag(comment, :image, size: "350x230") %></td>
       <td><%= comment.comment %></td>
-      <td><%# if comment.customer == current_user %><%= link_to "削除", shop_comment_path(shop_id: comment.shop_id, id: @shop.id), method: :delete %><%# end %></td>
+      <td><%# if comment.customer == current_user %><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %><%# end %></td>
     </tr>
     <%# end %>
     <% end %>

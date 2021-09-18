@@ -1,5 +1,4 @@
 <h3>マイページ</h3>
-
 <div class="container">
   <div class="row">
     <div class="col">
@@ -14,16 +13,39 @@
     </div>
     <div class="row">
     <div class="col">
-      <h4>口コミ</h4>
-      <table>
-        <% @comments.each do |comment| %>
-        <tr>
-          <td><%= attachment_image_tag(comment, :image, size: "150x100") %></td>
-          <td><%= comment.comment %></td>
-          <td><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></td>
-        </tr>
-        <% end %>
-      </table>
+      
+      <div class="container">
+        <ul class="tab-list">
+          <li class="tab box-active">お気に入り</li>
+          <li class="tab">気になっている</li>
+          <li class="tab">口コミ</li>
+        </ul>
+        <div class="tabbox-contents">
+          <div class="tabbox box-show">
+            <% @favorites.shop.each do |favorite| %>
+            <p><%= attachment_image_tag(favorite.shop, :image, size: "150x100") %></p>
+            <p><%= favorite.favorite %></p>
+            <p><%= link_to "削除", shop_favorite_path(favorite.shop_id, favorite.id), method: :delete %></p>
+            <% end %>
+          </div>
+          <div class="tabbox">
+            <p>タブ2</p>
+            <p>タブ2</p>
+            <p>タブ2</p>
+          </div>
+          <div class="tabbox">
+            <% @comments.each do |comment| %>
+            <p><%= attachment_image_tag(comment, :image, size: "150x100") %></p>
+            <p><%= comment.comment %></p>
+            <p><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+     
+      
+      
     </div>
     </div>
   </div>
