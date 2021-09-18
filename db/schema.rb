@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 2021_09_17_091340) do
     t.string "favorite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["shop_id"], name: "index_favorites_on_shop_id", unique: true
   end
 
   create_table "genres", force: :cascade do |t|

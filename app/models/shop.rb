@@ -7,7 +7,7 @@ class Shop < ApplicationRecord
   belongs_to :area
   belongs_to :atmosphere
   has_many :shop_genres, dependent: :destroy
-  has_many :revies, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   belongs_to :customer, optional: true
   has_many :customer, through: :favorites
 
