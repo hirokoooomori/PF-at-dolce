@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       resources :candidates, only: [:create, :destroy]
     end
 
-    # resources :customers
+    resources :customers, only: [:show, :edit, :quit, :update, :destroy]
     # resources :genres
     # resources :areas
     # resources :atmospheres

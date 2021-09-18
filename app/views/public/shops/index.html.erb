@@ -21,16 +21,16 @@
 
               <%# if current_customer&.like?(shop) %>
               <% if shop.favorited_by?(current_customer) %>
-                <p style="color: #5A3E26">
+                <p>
                   <% favorite = shop.favorites.find_by(customer_id: current_customer.id) %>
                   <%= link_to shop_favorite_path(shop.id, favorite.id), method: :delete do %>
-                    <i class="fas fa-heart" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.favorites.count %></font>
+                    <i class="fas fa-heart item" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.favorites.count %></font>
                   <% end %>
                 </p>
               <% else %>
                 <p>
                   <%= link_to shop_favorites_path(shop), method: :post do %>
-                    <i class="far fa-heart" style="color: #5A3E26;"></i><%= shop.favorites.count %>
+                    <i class="far fa-heart item" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.favorites.count %></font>
                   <% end %>
                 </p>
               <% end %>
@@ -40,19 +40,20 @@
                 <p>
                   <% candidate = shop.candidates.find_by(customer_id: current_customer.id) %>
                   <%= link_to shop_candidate_path(shop.id, candidate.id), method: :delete do %>
-                    <i class="fas fa-bookmark" style="color: #5A3E26;"></i><%= shop.candidates.count %>
+                    <i class="fas fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.candidates.count %></font>
                   <% end %>
                 </p>
               <% else %>
                 <p>
                   <%= link_to shop_candidates_path(shop), method: :post do %>
-                    <i class="far fa-bookmark" style="color: #5A3E26;"></i><%= shop.candidates.count %>
+                    <i class="far fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.candidates.count %></font>
                   <% end %>
                 </p>
               <% end %>
 
               <h5><span>店名  <%= shop.name %></span></h5>
               <p>営業日  <%= shop.business_day %></p>
+              
               <p>予算  <%= shop.budget %></p>
               <p>エリア  <%= shop.area.name %></p>
               <p>店舗ジャンル  <%= shop.atmosphere.atmosphere %></p>

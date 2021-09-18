@@ -1,0 +1,30 @@
+<h3>マイページ</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class='table'>
+        <tbody>
+            <tr>
+              <td><%= attachment_image_tag @customer, :image, :fill, 60, 60, fallback: "noimage.jpg", size:'100x100' %></td>
+              <td><%= @customer.name %></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+    <div class="col">
+      <h4>口コミ</h4>
+      <table>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td><%= attachment_image_tag(comment, :image, size: "150x100") %></td>
+          <td><%= comment.comment %></td>
+          <td><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>

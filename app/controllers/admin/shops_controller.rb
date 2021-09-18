@@ -3,17 +3,18 @@ class Admin::ShopsController < ApplicationController
   def index
     @shops = Shop.all
 
-  end
-
-  def new
-    @shop = Shop.new
     # params[:status].each do | di1,di2 |
     #   if di2 == "1"
     #     @status = Status.new(status:di1)
     #     @status.save
     #   end
     # end
-    # redirect_to admin_shops_path
+    #redirect_to admin_shops_path
+  end
+
+  def new
+    @shop = Shop.new
+
   end
 
   def create
@@ -48,5 +49,7 @@ end
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :business_day, :budget, :area_id, :atmosphere_id, :atmosphere, :status)
+    eat_in = params[:status][:eat_in].present? ? params[:status][:eat_in] : "0"
+    take_out = params[:status][:take_out].present? ? params[:status][:take_out] : "0"
+    params.require(:shop).permit(:name, :image, :business_day, :budget, :area_id, :atmosphere_id, :atmosphere).merge(eat_in: eat_in, take_out: take_out)
   end

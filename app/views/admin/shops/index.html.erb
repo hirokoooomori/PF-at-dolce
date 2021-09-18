@@ -19,6 +19,9 @@
               </h5>
               <p></p>
               <p>営業日<a>  </a><%= shop.business_day %></p>
+              <p>販売形式<a>  </a>
+                <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %>
+              </p>
               <p>予算<a>  </a><%= shop.budget %></p>
               <p>エリア<a>  </a><%= shop.area.name %></p>
               <p>店舗ジャンル<a>  </a><%= shop.atmosphere.atmosphere %></p>

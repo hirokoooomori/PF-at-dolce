@@ -45,6 +45,9 @@
           <% end %>
           <div>
             <a>営業日  <%= @shop.business_day %> / </a>
+            <a>販売形式<a>  </a>
+              <%= @shop.eat_in == "1" ? "イートイン  " : "" %><%= @shop.take_out == "1" ? "テイクアウト" : "" %>
+            </a>
             <a>予算  <%= @shop.budget %> / </a>
             <a>エリア  <%= @shop.area.name %> / </a>
             <a>店舗ジャンル  <%= @shop.atmosphere.atmosphere %></a>
@@ -55,6 +58,7 @@
 
 
 <div class="col">
+  <h3>コメント</h3>
   <table>
     <% @shop.comments.each do |comment| %>
     <%# comment.shop.each do |shop| %>
