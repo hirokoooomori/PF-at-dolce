@@ -12,41 +12,63 @@
       </table>
     </div>
     <div class="row">
-    <div class="col">
-      
-      <div class="container">
-        <ul class="tab-list">
-          <li class="tab box-active">お気に入り</li>
-          <li class="tab">気になっている</li>
-          <li class="tab">口コミ</li>
-        </ul>
-        <div class="tabbox-contents">
-          <div class="tabbox box-show">
-            <% @favorites.shop.each do |favorite| %>
-            <p><%= attachment_image_tag(favorite.shop, :image, size: "150x100") %></p>
-            <p><%= favorite.favorite %></p>
-            <p><%= link_to "削除", shop_favorite_path(favorite.shop_id, favorite.id), method: :delete %></p>
-            <% end %>
-          </div>
-          <div class="tabbox">
-            <p>タブ2</p>
-            <p>タブ2</p>
-            <p>タブ2</p>
-          </div>
-          <div class="tabbox">
-            <% @comments.each do |comment| %>
-            <p><%= attachment_image_tag(comment, :image, size: "150x100") %></p>
-            <p><%= comment.comment %></p>
-            <p><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></p>
-            <% end %>
+      <div class="col">
+        <div class="container">
+          <ul class="tab-list">
+            <li class="tab box-active">お気に入り <i class="fas fa-heart item" style="color: #66462b;"></i></li>
+            <li class="tab">気になっている <i class="fas fa-bookmark" style="color: #66462b;"></i></li>
+            <li class="tab">口コミ <i class="fas fa-comments" style="color: #66462b;"></i></li>
+          </ul>
+          <div class="tabbox-contents">
+            <div class="tabbox box-show">
+              <% @favorites.each do |favorite| %>
+              <% shop = favorite.shop %>
+                <p>
+                  <%= link_to shop_path(shop), class: "btn-link" do %>
+                    <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220" %>
+                  <% end %>
+                </p>
+                <p><h5><span>店名  <%= shop.name %></span></h5></p>
+                <p>営業日  <%= shop.business_day %></p>
+                <p>販売形式<a>  </a>
+                  <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %>
+                </p>
+                <p>予算  <%= shop.budget %></p>
+                <p>エリア  <%= shop.area.name %></p>
+                <p>店舗ジャンル  <%= shop.atmosphere.atmosphere %></p>
+              <% end %>
+            </div>
+
+            <div class="tabbox">
+              <% @candidates.each do |candidate| %>
+              <% shop = candidate.shop %>
+                <p>
+                  <%= link_to shop_path(shop), class: "btn-link" do %>
+                    <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220" %>
+                  <% end %>
+                </p>
+                <p><h5><span>店名  <%= shop.name %></span></h5></p>
+                <p>営業日  <%= shop.business_day %></p>
+                <p>販売形式<a>  </a>
+                  <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %>
+                </p>
+                <p>予算  <%= shop.budget %></p>
+                <p>エリア  <%= shop.area.name %></p>
+                <p>店舗ジャンル  <%= shop.atmosphere.atmosphere %></p>
+              <% end %>
+            </div>
+
+            <div class="tabbox">
+              <% @comments.each do |comment| %>
+              <p><%= attachment_image_tag(comment, :image, size: "150x100") %></p>
+              <p><%= comment.comment %></p>
+              <p><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></p>
+              <% end %>
+            </div>
+
           </div>
         </div>
       </div>
-      
-     
-      
-      
-    </div>
     </div>
   </div>
 </div>
