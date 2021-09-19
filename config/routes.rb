@@ -39,6 +39,14 @@ Rails.application.routes.draw do
     post 'homes/top' => 'homes#top'
     root to: 'homes#top'
     resources :products
+    resources :genres
+    resources :areas
+    resources :atmospheres
+    
+    resources :contacts, only: [:new, :create]
+    post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+    post 'contacts/back', to: 'contacts#back', as: 'back'
+    get 'done', to: 'contacts#done', as: 'done'
 
     resources :shops do
       resources :reviews, only: [:index, :create]
@@ -48,9 +56,9 @@ Rails.application.routes.draw do
     end
 
     resources :customers, only: [:show, :edit, :quit, :update, :destroy]
-    # resources :genres
-    # resources :areas
-    # resources :atmospheres
+    # 
+    # 
+    # 
     # resources :scores
 
     # resources :contacts

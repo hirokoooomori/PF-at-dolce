@@ -1,7 +1,43 @@
 <dev class="container">
   <div class="row">
     <div class="col-md-4">
-      ジャンル検索
+
+      <table class="table table-bordered genre-table">
+        <thead>
+          <tr>
+            <th>エリアから探す</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @shops.each do |shop| %>
+        <% area = shop.area %>
+          <tr>
+            <td>
+              <%= link_to area.name, shops_path('search[value]': area.id, 'search[how]': "match") %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      
+      <table class="table table-bordered genre-table">
+        <thead>
+          <tr>
+            <th>雰囲気から探す</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @shops.each do |shop| %>
+        <% atmosphere = shop.atmosphere %>
+          <tr>
+            <td>
+              <%= link_to atmosphere.atmosphere, shops_path('search[value]': atmosphere.id, 'search[how]': "match") %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
     </div>
     <div class="col-md-8">
       <div class="row">
