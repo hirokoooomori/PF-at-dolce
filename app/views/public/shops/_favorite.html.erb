@@ -1,0 +1,14 @@
+  <% if shop.favorited_by?(current_customer) %>
+    <p>
+      <% favorite = shop.favorites.find_by(customer_id: current_customer.id) %>
+      <%= link_to shop_favorite_path(shop.id, favorite.id), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+        <i class="fas fa-heart item" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.favorites.count %></font>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to shop_favorites_path(shop), method: :post, remote: true, data: {"turbolinks" => false} do %>
+        <i class="far fa-heart item" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.favorites.count %></font>
+      <% end %>
+    </p>
+  <% end %>

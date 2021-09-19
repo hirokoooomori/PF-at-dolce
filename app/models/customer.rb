@@ -16,21 +16,21 @@ class Customer < ApplicationRecord
 
   attachment :image
 
-  def own?(object)
-    id == object.customer_id
-  end
+  # def own?(object)
+  #   id == object.customer_id
+  # end
 
-  def favorite(shop)
-    favorites.find_or_create_by(shop: shop)
-  end
+  # def favorite(shop)
+  #   favorites.find_or_create_by(shop: shop)
+  # end
 
-  def like?(shop)
-    favorite_shops.include?(shop)
-  end
+  # def like?(shop)
+  #   favorite_shops.include?(shop)
+  # end
 
   
 
-  def unlike(shop)
-    favorite_posts.delete(shop)
-  end
+  # def unlike(shop)
+  #   favorite_posts.delete(shop)
+  # end
 end

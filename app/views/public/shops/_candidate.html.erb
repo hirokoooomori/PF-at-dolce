@@ -1,0 +1,14 @@
+  <% if shop.candidated_by?(current_customer) %>
+    <p>
+      <% candidate = shop.candidates.find_by(customer_id: current_customer.id) %>
+      <%= link_to shop_candidate_path(shop.id, candidate.id), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+        <i class="fas fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.candidates.count %></font>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to shop_candidates_path(shop), method: :post, remote: true, data: {"turbolinks" => false} do %>
+        <i class="far fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.candidates.count %></font>
+      <% end %>
+    </p>
+  <% end %>

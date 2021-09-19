@@ -18,42 +18,17 @@
               </div>
             </div>
             <div class="col-md-7 shop-item">
-
-              <%# if current_customer&.like?(shop) %>
-              <% if shop.favorited_by?(current_customer) %>
-                <p>
-                  <% favorite = shop.favorites.find_by(customer_id: current_customer.id) %>
-                  <%= link_to shop_favorite_path(shop.id, favorite.id), method: :delete do %>
-                    <i class="fas fa-heart item" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.favorites.count %></font>
-                  <% end %>
-                </p>
-              <% else %>
-                <p>
-                  <%= link_to shop_favorites_path(shop), method: :post do %>
-                    <i class="far fa-heart item" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.favorites.count %></font>
-                  <% end %>
-                </p>
-              <% end %>
-
-              <%# if current_customer&.like?(shop) %>
-              <% if shop.candidated_by?(current_customer) %>
-                <p>
-                  <% candidate = shop.candidates.find_by(customer_id: current_customer.id) %>
-                  <%= link_to shop_candidate_path(shop.id, candidate.id), method: :delete do %>
-                    <i class="fas fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.candidates.count %></font>
-                  <% end %>
-                </p>
-              <% else %>
-                <p>
-                  <%= link_to shop_candidates_path(shop), method: :post do %>
-                    <i class="far fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= shop.candidates.count %></font>
-                  <% end %>
-                </p>
-              <% end %>
-
+              <div id="favorite_shop_<%= shop.id %>">
+                <%= render 'favorite', shop: shop %>
+              </div>
+              <div id="candidate_shop_<%= shop.id %>">
+                <%= render 'candidate', shop: shop %>
+              </div>
               <h5><span>店名  <%= shop.name %></span></h5>
               <p>営業日  <%= shop.business_day %></p>
-              
+              <p>販売形式<a>  </a>
+                <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %>
+              </p>
               <p>予算  <%= shop.budget %></p>
               <p>エリア  <%= shop.area.name %></p>
               <p>店舗ジャンル  <%= shop.atmosphere.atmosphere %></p>
