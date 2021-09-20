@@ -61,9 +61,15 @@
 
     <div class="tabbox-contents">
       <div class="tabbox box-show">
+        
         <% @shop.comments.each do |comment| %>
-          <p><%= attachment_image_tag(comment, :image, size: "350x230") %></p>
-          <p><%# if comment.customer == current_user %><%#= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %><%# end %></p>
+        <div class="comment-image">
+          <div class="col-mb-3">
+          <div class="comment-image">
+            <p><%= attachment_image_tag(comment, :image, size: "300x300", class: "img-show") %></p>
+          </div>
+      　</div>
+      　</div>
         <% end %>
       </div>
 

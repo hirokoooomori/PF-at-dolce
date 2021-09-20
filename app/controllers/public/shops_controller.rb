@@ -3,6 +3,10 @@ class Public::ShopsController < ApplicationController
   def index
     @shops = Shop.all
     #candidate = Candidate.find(params[:id])
+    
+    #@areas =@shops.area
+    # @shops.each do |shop| 
+    # area = shop.area 
   end
 
   def show
@@ -10,9 +14,7 @@ class Public::ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @comments = @shop.comments.order(created_at: :desc)#:desc = 降順
   end
-
-end
-
+  
   private
 
   def shop_params
@@ -20,3 +22,5 @@ end
     take_out = params[:status][:take_out].present? ? params[:status][:take_out] : "0"
     params.require(:shop).permit(:name, :image, :business_day, :budget, :area_id, :comment_id, :atmosphere_id, :status, :product_id)
   end
+  
+end
