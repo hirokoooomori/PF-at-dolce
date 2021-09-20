@@ -65,7 +65,9 @@
         <% @shop.comments.each do |comment| %>
         <div class="comment-image">
           <div class="col-mb-3">
-          <p><%= attachment_image_tag(comment, :image, size: "300x300") %></p>
+          <div class="comment-image">
+            <p><%= attachment_image_tag(comment, :image, size: "300x300", class: "img-show") %></p>
+          </div>
       　</div>
       　</div>
         <% end %>

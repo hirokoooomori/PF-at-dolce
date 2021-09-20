@@ -1,5 +1,5 @@
 class Public::ContactsController < ApplicationController
-  
+
   def new
     @contact = Contact.new
   end
@@ -7,11 +7,13 @@ class Public::ContactsController < ApplicationController
   # 確認画面
   def confirm
     @contact = Contact.new(contact_params)
-    if @contact.invalid?
-      render :new
-    end
+    @contact.customer_id = current_customer.id
+
+    # if @contact.invalid?
+    #   render :new
+    # end
   end
-  
+
   def back
     @contact = Contact.new(contact_params)
     render :new
@@ -41,5 +43,5 @@ class Public::ContactsController < ApplicationController
                   :message
                  )
   end
-  
+
 end
