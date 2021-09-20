@@ -11,7 +11,7 @@ class Public::ContactsController < ApplicationController
       render :new
     end
   end
-　
+  
   def back
     @contact = Contact.new(contact_params)
     render :new
