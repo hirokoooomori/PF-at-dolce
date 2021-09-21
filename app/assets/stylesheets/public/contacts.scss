@@ -1,3 +1,22 @@
 // Place all the styles related to the public::contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+contents {
+  margin: 0;
+}
+
+.done {
+  position: relative;
+  /* ウィンドウ幅を想定して指定していますが適宜変更してください */
+  width: 100vw;
+  height: 100vh;
+}
+
+.done-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);/* 要素の大きさの半分の距離を左、上方向に移動する */
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}

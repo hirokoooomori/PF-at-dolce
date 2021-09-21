@@ -18,6 +18,7 @@
         <li class="nav-item"><%= link_to "トップ", root_path, class: 'link'%></li>
         <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer), class: 'link'%></li>
         <li class="nav-item"><%= link_to "店舗一覧", shops_path, class: 'link'%></li>
+        <li class="nav-item"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
         <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
         <li class="nav-item">
           <%= form_with url: shops_path, method: :get, local: true do |f| %>

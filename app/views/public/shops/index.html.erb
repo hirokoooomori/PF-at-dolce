@@ -14,13 +14,13 @@
         <%# @areas.each do |area| %>
           <tr>
             <td>
-              <%= link_to area.name, shops_path('search[value]': area.id, 'search[how]': "match") %>
+              <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area") %>
             </td>
           </tr>
         <% end %>
         </tbody>
       </table>
-      
+
       <table class="table table-bordered genre-table">
         <thead>
           <tr>
@@ -32,14 +32,14 @@
         <% atmosphere = shop.atmosphere %>
           <tr>
             <td>
-              <%= link_to atmosphere.atmosphere, shops_path('search[value]': atmosphere.id, 'search[how]': "match") %>
+              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match",'search[target]': "at") %>
             </td>
           </tr>
         <% end %>
         </tbody>
       </table>
     </div>
-    
+
     <div class="col-md-8">
       <h4>店舗一覧</h4>
       <% @shops.each do |shop| %>
