@@ -31,7 +31,7 @@
 
           <tr>
             <td>
-              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match", 'search[how]': "match",'search[target]': "atmosphere") %>
+              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match", 'search[target]': "atmosphere") %>
             </td>
           </tr>
         <% end %>
@@ -44,10 +44,7 @@
         <h4>店舗一覧</h4>
         <div>
 
-
-
           <% @shops.each do |shop| %>
-
           <%# @shops.each do |shop| %>
           <div class="img-thumbnail">
   			    <div class="col-md-5">

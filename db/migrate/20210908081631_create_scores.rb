@@ -5,7 +5,7 @@ class CreateScores < ActiveRecord::Migration[5.2]
       t.string :five_score
       t.datetime :created_at
       t.datetime :updated_at
-      t.float :rate, null: false, default: 0
+      t.float :rate, null: false
       t.integer :shop_id
       t.timestamps
     end

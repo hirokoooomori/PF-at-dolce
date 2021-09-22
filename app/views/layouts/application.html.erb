@@ -21,8 +21,8 @@
         <li class="nav-item"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
         <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
         <li class="nav-item">
-          <%= form_with url: shops_path, method: :get, local: true do |f| %>
-            <%= f.text_field 'search[value]' %>
+          <%= form_with url: search_path, method: :get, local: true do |f| %>
+            <%= f.text_field 'search[value]', placeholder: "店舗名" %>
             <span class="search-button text-right">
               <%= f.submit :"検索" %>
             </span>

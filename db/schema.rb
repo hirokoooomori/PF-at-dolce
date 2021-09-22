@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2021_09_17_091340) do
     t.string "five_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "rate", default: 0.0, null: false
+    t.float "rate", null: false
     t.integer "shop_id"
   end
 
