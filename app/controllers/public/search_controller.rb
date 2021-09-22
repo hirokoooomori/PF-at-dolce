@@ -4,7 +4,6 @@ class Public::SearchController < ApplicationController
     @value = params["search"]["value"]
     @how = params["search"]["how"]
     @target = params["search"]["target"]
-
     @shops = search_for(@how, @value, @target)
 
   end

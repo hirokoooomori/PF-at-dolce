@@ -9,9 +9,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @shops.each do |shop| %>
-        <% area = shop.area %>
-        <%# @areas.each do |area| %>
+        <% Area.all.each do |area| %>
           <tr>
             <td>
               <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area") %>
@@ -28,11 +26,10 @@
           </tr>
         </thead>
         <tbody>
-        <% @shops.each do |shop| %>
-        <% atmosphere = shop.atmosphere %>
+        <% Atmosphere.all.each do |atmosphere| %>
           <tr>
             <td>
-              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match",'search[target]': "at") %>
+              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match",'search[target]': "atmosphere") %>
             </td>
           </tr>
         <% end %>

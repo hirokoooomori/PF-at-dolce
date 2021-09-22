@@ -13,7 +13,7 @@
 
           <tr>
             <td>
-              <%= link_to area.name, shops_path('search[value]': area.id, 'search[how]': "match") %>
+              <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area") %>
             </td>
           </tr>
         <% end %>
@@ -31,7 +31,7 @@
 
           <tr>
             <td>
-              <%= link_to atmosphere.atmosphere, shops_path('search[value]': atmosphere.id, 'search[how]': "match") %>
+              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match", 'search[how]': "match",'search[target]': "atmosphere") %>
             </td>
           </tr>
         <% end %>
