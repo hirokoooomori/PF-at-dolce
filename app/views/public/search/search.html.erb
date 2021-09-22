@@ -9,17 +9,17 @@
           </tr>
         </thead>
         <tbody>
-        <% @shops.each do |shop| %>
-        <% area = shop.area %>
+        <% Area.all.each do |area| %>
+
           <tr>
             <td>
-              <%= link_to area.name, shops_path('search[value]': area.id, 'search[how]': "match") %>
+              <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area") %>
             </td>
           </tr>
         <% end %>
         </tbody>
       </table>
-      
+
       <table class="table table-bordered genre-table">
         <thead>
           <tr>
@@ -27,11 +27,11 @@
           </tr>
         </thead>
         <tbody>
-        <% @shops.each do |shop| %>
-        <% atmosphere = shop.atmosphere %>
+        <% Atmosphere.all.each do |atmosphere| %>
+
           <tr>
             <td>
-              <%= link_to atmosphere.atmosphere, shops_path('search[value]': atmosphere.id, 'search[how]': "match") %>
+              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match", 'search[how]': "match",'search[target]': "atmosphere") %>
             </td>
           </tr>
         <% end %>
@@ -43,7 +43,12 @@
       <div class="row">
         <h4>店舗一覧</h4>
         <div>
+
+
+
           <% @shops.each do |shop| %>
+
+          <%# @shops.each do |shop| %>
           <div class="img-thumbnail">
   			    <div class="col-md-5">
   			      <div class="col-md-5 shop-image">
@@ -55,10 +60,10 @@
             </div>
             <div class="col-md-7 shop-item">
               <div id="favorite_shop_<%= shop.id %>">
-                <%= render 'favorite', shop: shop %>
+                <%= render 'public/shops/favorite', shop: shop %>
               </div>
               <div id="candidate_shop_<%= shop.id %>">
-                <%= render 'candidate', shop: shop %>
+                <%= render 'public/shops/candidate', shop: shop %>
               </div>
               <h5><span>店名  <%= shop.name %></span></h5>
               <p>営業日  <%= shop.business_day %></p>

@@ -8,10 +8,10 @@ class Public::ContactsController < ApplicationController
   def confirm
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
+    if @contact.invalid?
 
-    # if @contact.invalid?
-    #   render :new
-    # end
+      render :new
+    end
   end
 
   def back
@@ -21,8 +21,9 @@ class Public::ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    if @contact.save
-      ContactMailer.send_mail(@contact).deliver_now
+    @contact.customer_id = current_customer.id
+    if @contact.save!
+      #ContactMailer.send_mail(@contact).deliver_now
       redirect_to done_path
     else
       render :new
@@ -36,12 +37,7 @@ class Public::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact)
-          .permit(:email,
-                  :name,
-                  :title,
-                  :message
-                 )
+    params.require(:contact).permit(:name, :message)
   end
 
 end

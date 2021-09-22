@@ -61,16 +61,17 @@
 
     <div class="tabbox-contents">
       <div class="tabbox box-show">
-        
+      <div class="d-flex flex-wrap">
         <% @shop.comments.each do |comment| %>
         <div class="comment-image">
-          <div class="col-mb-3">
+          <div class="col-md-2">
           <div class="comment-image">
-            <p><%= attachment_image_tag(comment, :image, size: "300x300", class: "img-show") %></p>
+            <p><%= attachment_image_tag(comment, :image, size: "260x260", class: "img-show") %></p>
           </div>
       　</div>
       　</div>
         <% end %>
+      </div>
       </div>
 
       <div class="tabbox">

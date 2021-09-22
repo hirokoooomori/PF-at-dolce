@@ -1,42 +1,36 @@
 class Public::SearchController < ApplicationController
-  
+
   def search
     @value = params["search"]["value"]
     @how = params["search"]["how"]
-    @datas = search_for(@how, @value)
+    @target = params["search"]["target"]
+    @shops = search_for(@how, @value, @target)
+
   end
 
   private
 
-  def match(value)
-    #.orを使用することで、valueに一致するカラムのデータをnameカラムとgenre_idカラムから探してきます。
-    Item.where(name: value).or(Item.where(genre_id: value))
-  end
-
-  def forward(value)                              #forward以降は商品名検索の定義しかしてません。
-    Item.where("name LIKE ?", "#{value}%")
-  end
-
-  def backward(value)
-    Item.where("name LIKE ?", "%#{value}")
+  def match(value, target)
+    if target == "area"
+      Shop.where(area_id: value)
+    elsif target == "atmosphere"
+      Shop.where(atmosphere_id: value)
+    #Shop.where(name: value)
+    end
   end
 
   def partical(value)
-    Item.where("name LIKE ?", "%#{value}%")
+    Shop.where("name LIKE ?", "%#{value}%")
   end
 
 
-  def search_for(how, value)
-    case how                     #引数のhowと一致する処理に進むように定義しています。
-    when 'match'                 #ジャンル検索の場合はmatchで固定してるので、必ず'match'の処理に進みます。
-      match(value)
-    when 'forward'
-      forward(value)
-    when 'backward'
-      backward(value)
+  def search_for(how, value, target)
+    case how
+    when 'match'
+      match(value, target)
     when 'partical'
       partical(value)
     end
   end
-  
+
 end

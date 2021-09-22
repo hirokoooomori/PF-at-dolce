@@ -42,7 +42,9 @@ Rails.application.routes.draw do
     resources :genres
     resources :areas
     resources :atmospheres
-    
+    get 'search' => 'search#search'
+
+
     resources :contacts, only: [:new, :create]
     post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
     post 'contacts/back', to: 'contacts#back', as: 'back'
@@ -56,12 +58,10 @@ Rails.application.routes.draw do
     end
 
     resources :customers, only: [:show, :edit, :quit, :update, :destroy]
-    # 
-    # 
-    # 
+
     # resources :scores
 
-    # resources :contacts
+
     # resources :faqs
 
   end
