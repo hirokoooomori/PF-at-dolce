@@ -40,6 +40,7 @@
     <div class="col-md-8">
       <h4>店舗一覧</h4>
       <% @shops.each do |shop| %>
+      <% @shop = shop %>
       <div class="container">
         <div class="row">
         <div class="col-6">
@@ -57,8 +58,21 @@
           <div id="candidate_shop_<%= shop.id %>">
             <%= render 'candidate', shop: shop %>
           </div>
+
           <div class="shop-detail">
             <h5><span>店名  <%= shop.name %></span></h5>
+            <div class="average-review-rating" data-score=<%#= @comment.average_rate %>></div><%# average_ = 平均を計算 %>
+              <script>
+                // $('.average-review-rating').raty({
+                //   readOnly: true,
+                //   starOn: "<%= asset_path('star-on.png') %>",
+                //   starOff: "<%= asset_path('star-off.png') %>",
+                //   starHalf: "<%= asset_path('star-half.png') %>",
+                //   score: function() {
+                //     return $(this).attr('data-score')
+                //   }
+                // });
+              </script>
             営業日  <%= shop.business_day %><br>
             販売形式
             <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %>

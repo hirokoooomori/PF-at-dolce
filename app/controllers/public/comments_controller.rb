@@ -6,7 +6,8 @@ class Public::CommentsController < ApplicationController
     comment.shop_id = @shop.id
     comment.customer_id = current_customer.id
     comment.image_id = @image_id
-    if comment.save
+    
+    if comment.save!
       redirect_to shop_path(@shop)
     else
       flash.now[:alert] = 'コメントを入力してください。'
@@ -27,7 +28,7 @@ class Public::CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :image, :shop_id)
+    params.require(:comment).permit(:comment, :image, :shop_id, :rate)
   end
 
 end

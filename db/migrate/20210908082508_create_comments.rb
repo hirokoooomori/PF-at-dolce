@@ -3,7 +3,9 @@ class CreateComments < ActiveRecord::Migration[5.2]
     create_table :comments do |t|
       t.integer :shop_id
       t.integer :customer_id
+      t.string :image_id
       t.string :comment
+      t.float :rate, null: false
       t.datetime :created_at
       t.datetime :updated_at
 

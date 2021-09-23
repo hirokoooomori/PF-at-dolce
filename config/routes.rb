@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :areas
     resources :atmospheres
     get 'search' => 'search#search'
+    resources :scores
 
 
     resources :contacts, only: [:new, :create]
@@ -58,8 +59,6 @@ Rails.application.routes.draw do
     end
 
     resources :customers, only: [:show, :edit, :quit, :update, :destroy]
-
-    # resources :scores
 
 
     # resources :faqs
