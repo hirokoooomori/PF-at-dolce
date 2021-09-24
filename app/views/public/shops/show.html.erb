@@ -77,18 +77,47 @@
       <div class="tabbox">
         <%= form_with model:[@shop, @comment], local: true do |f| %>
         <p>
-          <tr>
-            <td>店舗画</td>
-            <td><%= f.file_field :image %></td>
-          </tr>
-          <tr>
-            <td>コメント</td>
-            <td><%= f.text_area :comment %></td>
-          </tr>
+          <div>画像選択</div>
+          <div><%= f.file_field :image %></div>
+          <div>コメント</div>
+          <div><%= f.text_area :comment %></div>
+          <div id="rating-form">
+          <div>評価：
+          <%#= f.hidden_field :rate, :value => 'score' %>
+            <script>
+              $('#rating-form').raty({
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                scoreName: 'comment[rate]'
+              });
+            </script>
+          </div>
+          </div>
           <%= f.submit "送信" %>
         </p>
         <% end %>
+
+
+
+
+
         <% @shop.comments.each do |comment| %>
+          <p>
+            <span>評価：</span>
+            <span id="star-rate-<%= comment.id %>"></span>
+            <script>
+              $('#star-rate-<%= comment.id %>').raty({
+                size: 36,
+                starOff: "<%= asset_path('star-off.png') %>",
+                starOn: "<%= asset_path('star-on.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                half: true,
+                readOnly: true,
+                score: <%= comment.rate %>,
+              });
+            </script>
+            <%= comment.rate %>
+          </p>
           <p><%#= attachment_image_tag(comment, :image, size: "350x230") %></p>
           <p><%= comment.comment %></p>
           <p><%# if comment.customer == current_user %><%#= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %><%# end %></p>

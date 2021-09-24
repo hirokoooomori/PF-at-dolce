@@ -1,7 +1,9 @@
 class Public::SearchController < ApplicationController
 
   def search
+
     @value = params["search"]["value"]
+
     @how = params["search"]["how"]
     @target = params["search"]["target"]
     @shops = search_for(@how, @value, @target)
@@ -15,7 +17,9 @@ class Public::SearchController < ApplicationController
       Shop.where(area_id: value)
     elsif target == "atmosphere"
       Shop.where(atmosphere_id: value)
-    #Shop.where(name: value)
+
+    elsif value == "name"
+      Shop.where(name: value)
     end
   end
 
@@ -25,12 +29,18 @@ class Public::SearchController < ApplicationController
 
 
   def search_for(how, value, target)
-    case how
-    when 'match'
+    if how == 'match'
       match(value, target)
-    when 'partical'
+    else
       partical(value)
     end
+
+    # case how
+    # when 'match'
+    #   match(value, target)
+    # else
+    #   partical(value)
+    # end
   end
 
 end
