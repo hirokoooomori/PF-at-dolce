@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//show.html.erb
 html,body,h1,h2,h3,h4,ul,ol,dl,li,dt,dd,p,div,span,img,a,table,tr,th,td {
   margin: 0;
   padding: 0;
@@ -21,6 +22,7 @@ html,body,h1,h2,h3,h4,ul,ol,dl,li,dt,dd,p,div,span,img,a,table,tr,th,td {
   display: flex;
   justify-content: space-around;
   text-align: center;
+  //bordercolor: white;
 }
 
 .tab {
@@ -77,3 +79,42 @@ shop-item {
 .item {
   color: linear-gradient(#af611c, #5a3e26);
 }
+
+//index.html.erb
+
+.genre-title {
+  background-color: #b3947d;
+  color: white;
+  // background-color: #af611c;
+}
+
+.genre-table {
+  color: #4d322e;
+
+//   border-collapse:separate;
+//   border-spacing: 5px;
+//   width: 100%;
+ }
+
+// .genre-table th {
+//   border-radius: 5px;
+//   text-align: center;
+//   padding: 10px 0;
+// }
+
+// .genre-table td {
+//   border-radius: 5px;
+//   text-align: center;
+//   padding: 10px 0;
+// }
+
+// .genre-table th {
+//   background-color: #c79852;
+//   color: white;
+//   border:solid 1px #927141;
+// }
+
+// .genre-table td {
+//   background-color: #e4d4bc;
+//   border:solid 1px #af9d85;
+// }
