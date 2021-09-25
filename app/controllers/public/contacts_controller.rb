@@ -6,6 +6,7 @@ class Public::ContactsController < ApplicationController
 
   # 確認画面
   def confirm
+    
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
     if @contact.invalid?

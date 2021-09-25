@@ -13,7 +13,7 @@
         <% Area.all.each do |area| %>
           <tr>
             <td>
-              <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area"),class:"link" %>
+              <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area"),class:"genre-link" %>
             </td>
           </tr>
         <% end %>
@@ -31,7 +31,7 @@
         <% Atmosphere.all.each do |atmosphere| %>
           <tr>
             <td>
-              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match",'search[target]': "atmosphere"),class:"link" %>
+              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match",'search[target]': "atmosphere"),class:"genre-link" %>
             </td>
           </tr>
         <% end %>

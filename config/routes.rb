@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     resources :atmospheres
     resources :scores
     resources :comments
-    resources :contacts
-    resources :faqs
+    resources :contacts do
+      resources :faqs
+    end
   end
 
   resources :admin, only: [:index, :new, :create, :show] do
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
     resources :atmospheres
     get 'search' => 'search#search'
     resources :scores
+    resources :faqs
 
 
     resources :contacts, only: [:new, :create]
@@ -61,7 +63,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :quit, :update, :destroy]
 
 
-    # resources :faqs
+
 
   end
 
