@@ -64,18 +64,8 @@
             <div id="candidate_shop_<%= shop.id %>" class="favorite-candidate">
               <%= render 'candidate', shop: shop %>
             </div>
-            <div class="average-review-rating" data-score=<%#= @comment.average_rate %>></div><%# average_ = 平均を計算 %>
-              <script>
-                // $('.average-review-rating').raty({
-                //   readOnly: true,
-                //   starOn: "<%= asset_path('star-on.png') %>",
-                //   starOff: "<%= asset_path('star-off.png') %>",
-                //   starHalf: "<%= asset_path('star-half.png') %>",
-                //   score: function() {
-                //     return $(this).attr('data-score')
-                //   }
-                // });
-              </script>
+            <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
+              
             営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
             販売形式
             <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %><br>
@@ -90,3 +80,16 @@
     </div>
   </div>
 </div>
+
+<script>
+  <%# eachの中にscriptタグを入れる場合はIDの指定をしないと複数のscriptタグが生成されてしまう %>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

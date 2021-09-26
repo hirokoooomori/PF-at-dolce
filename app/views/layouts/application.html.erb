@@ -14,8 +14,24 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
- <header class="fixed-top">
+  <header class="fixed-top">
+
+  
+
+   <div class="mx-3">
     <nav class="navbar navbar-expand-md navbar-light" >
+      
+      <div class="nav navbar-nav navbar-left" >
+        <div class="logo">
+        <% if admin_signed_in? %>
+          
+          <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), admin_homes_top_path, class: "text-dark" %>
+        <% else %>
+          <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), root_path, class: "text-dark" %>
+        <% end %>
+        </div>
+      </div>
+      
     <% if customer_signed_in? %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" style="padding-left:0.5rem"><%= link_to "トップ", root_path, class: 'link'%></li>
@@ -23,11 +39,13 @@
         <li class="nav-item" style="padding-left:0.5rem"><%= link_to "店舗一覧", shops_path, class: 'link'%></li>
         <li class="nav-item" style="padding-left:0.5rem"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
         <li class="nav-item" style="padding-left:0.5rem"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
-        <li class="nav-item" style="padding-left:0.5rem">
+        <li class="nav-item form-inline" style="padding-left:0.5rem">
           <%= form_with url: search_path, method: :get, local: true do |f| %>
-            <%= f.text_field 'search[value]', placeholder: "店舗名" %>
+            <%= f.text_field 'search[value]', placeholder: "店舗名を入力" %>
             <span class="search-button text-right">
-              <%= f.submit :"検索" %>
+              <%= f.button :type => "search", style: 'border-style: none;', class: "search-button btn-outline-secondary" do %>
+                <i class="fas fa-search"></i>
+              <% end %>
             </span>
           <% end %>
         </li>
@@ -52,6 +70,7 @@
       </div>
      <% end %>
      </nav>
+     </div>
   </header>
 
   <main>
