@@ -82,9 +82,12 @@ shop-item {
 
 //index.html.erb
 
+
+
 .genre-title {
   background-color: #b3947d;
   color: white;
+  margin: 100px;
   // background-color: #af611c;
 }
 
@@ -112,6 +115,18 @@ shop-item {
 
  .shop-name {
    color: #4d4d4d;
+ }
+
+ .image {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }
+
+ .shop-img {
+   width: 320px;
+   height: 220px;
+   object-fit: cover;
  }
 
 // .genre-table th {
