@@ -59,12 +59,11 @@ html,body,h1,h2,h3,h4,ul,ol,dl,li,dt,dd,p,div,span,img,a,table,tr,th,td {
 //   display: inline-block;
 // }
 
-.comment-image {
-  width: 270px;
-  height: 270px;
-}
 
-.img-show {
+
+.comment-img {
+  width: 100%;
+  // height: 300px;
   object-fit: cover;
 }
 
@@ -78,6 +77,10 @@ shop-item {
 
 .item {
   color: linear-gradient(#af611c, #5a3e26);
+}
+
+.comment-item {
+  background: white;
 }
 
 //index.html.erb
@@ -118,8 +121,8 @@ shop-item {
  }
 
  .image {
-   width: 100%;
-   height: 100%;
+  // width: 100%;
+  // height: 100%;
    object-fit: cover;
  }
 
