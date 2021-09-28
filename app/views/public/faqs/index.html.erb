@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 m-5">
+      <h2><strong><font color="#4d4d4d">FAQ</font></strong></h2>
+          <div class="faq m-4">
+            <% @faqs.each do |faq| %>
+            <ul id="faq-list">
+              <li class="faq-list-item">
+                <div class="question"><strong style="color: #808080;">Q.  </strong><%= faq.frequently %></div>
+                <span>+</span>
+                <div class="answer">
+                  <div><strong>A.  </strong><%= faq.question %></div>
+                </div>
+              </li>
+            </ul>
+            <% end %>
+          </div>
+
+    </div>
+  </div>
+</div>

@@ -1,23 +1,25 @@
-<table>
-  <tbody>
-    <tr>
-      <td class="text-center" style="width: 30%;">お名前</td>
-      <td><%= @contact.name %></td>
-    </tr>
-    <tr>
-      <td class="text-center">お問い合わせ内容</td>
-      <td style="white-space: pre-wrap;"><%= @contact.message %></td>
-    </tr>
-  </tbody>
-</table>
-
-<%= form_with model: @contact, url: contacts_path, local: true do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :message %>
-  <div><%= f.submit '送信' %></div>
-<% end %>
-<%= form_with model:  @contact, url: back_path, local: true do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :message %>
-  <div><%= f.submit '入力画面に戻る' %></div>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-7 mt-5 new-form">
+      <h3><strong><font color="#4d4d4d">お問い合わせ確認</font></strong></h3>
+      <div class="m-5">
+        <div class="m-2"><a>お名前 : </a><%= @contact.name %></div>
+        <div class="m-2"><a>お問い合わせ内容 : </a><%= @contact.message %></div>
+        <div class="m-2">
+          <%= form_with model: @contact, url: contacts_path, local: true do |f| %>
+            <%= f.hidden_field :name %>
+            <%= f.hidden_field :message %>
+            <%= f.submit '送信', class: "confirm-button" %>
+          <% end %>
+        </div>
+        <div class="m-2">
+          <%= form_with model:  @contact, url: back_path, local: true do |f| %>
+            <%= f.hidden_field :name %>
+            <%= f.hidden_field :message %>
+            <%= f.submit '入力画面に戻る', class: "confirm-return-button" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
