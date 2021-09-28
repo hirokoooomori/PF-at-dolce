@@ -9,7 +9,6 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
     if @contact.invalid?
-
       render :new
     end
   end
@@ -22,8 +21,7 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
-    if @contact.save!
-      #ContactMailer.send_mail(@contact).deliver_now
+    if @contact.save
       redirect_to done_path
     else
       render :new

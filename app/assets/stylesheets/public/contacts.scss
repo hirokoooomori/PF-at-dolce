@@ -2,6 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.button {
+  padding: 8px 24px;
+  color: white;
+  background: #668ad8;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.button:hover {
+ opacity: 1;
+}
+
+.confirm-button {
+  padding: 2px 20px;
+  color: white;
+  background: #668ad8;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.confirm-button:hover {
+  opacity: 1;
+}
+
+.confirm-return-button {
+  padding: 1px 15px;
+  color: #1a1a1a;
+  background: #f5f5f5;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+.confirm-return-button:hover {
+  opacity: 1;
+}
+
 contents {
   margin: 0;
 }

@@ -10,6 +10,7 @@ class Shop < ApplicationRecord
   has_many :reviews, dependent: :destroy
   belongs_to :customer, optional: true
   has_many :customer, through: :favorites
+  has_one :faq
 
   attachment :image
 

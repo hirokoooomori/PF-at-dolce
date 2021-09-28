@@ -17,14 +17,21 @@
 @import 'bootstrap';
 
 .heaedr_logo {
- width: 300px;
- height: 100px;
+ //width: 300px;
+ height: 40px;
 }
 
 header {
   background-color: #986e4e;
-  background-image: linear-gradient(62deg, #986e4e 0%, #5a3e26 100%);
   color: white;
+  height: 45px;
+}
+
+header nav.navbar {
+  padding: 0;
+}
+
+.logo {
   height: 45px;
 }
 
@@ -37,3 +44,24 @@ main {
   padding-top: 45px;
 }
 
+.search {
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #999;
+  display: block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 260px;
+  overflow: hidden;
+}
+
+footer {
+  background-color: #986e4e;
+  color: white;
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  //bottom: 0;
+  line-height: 40px; //テキストが１行の時のみ
+}

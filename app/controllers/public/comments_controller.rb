@@ -6,18 +6,24 @@ class Public::CommentsController < ApplicationController
     comment.shop_id = @shop.id
     comment.customer_id = current_customer.id
     comment.image_id = @image_id
-    
-    if comment.save!
-      redirect_to shop_path(@shop)
+    comment_count = Comment.where(shop_id: params[:shop_id]).where(customer_id: current_customer.id).count
+
+    if comment.valid?
+      if comment_count < 1
+        comment.save
+        redirect_to shop_path(@shop), notice: "レビューを投稿しました"
+      else
+        redirect_to shop_path(@shop), notice: "レビューの投稿は一度までです"
+      end
     else
-      flash.now[:alert] = 'コメントを入力してください。'
+      flash.now[:alert] = 'コメントを入力してください'
     end
   end
 
   def destroy
     @shop = Shop.find(params[:shop_id])
     comment = @shop.comments.find(params[:id])
-    
+
     if comment.customer != current_customer
       redirect_to request.referer
     end

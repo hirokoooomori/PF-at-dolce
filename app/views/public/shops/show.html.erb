@@ -1,26 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-4">
       <div class="shop-image">
         <%= link_to shop_path(@shop), class: "btn-link" do %>
-          <%= attachment_image_tag @shop, :image, format: 'jpeg', size: "320x220" %>
+          <%= attachment_image_tag @shop, :image, format: 'jpeg', size: "320x220", class: 'shop-img' %>
         <% end %>
       </div>
-
+    </div>
+    <div class="col-md-6">
       <div>
-        <h5><span><%= @shop.name %></span></h5>
+        <h3 class="shop-name"><strong><%= @shop.name %></strong></h3>
         <div class="shop-item">
           <% if @shop.favorited_by?(current_customer) %>
             <p class="fav-inline" style="color: #5A3E26">
               <% favorite = @shop.favorites.find_by(customer_id: current_customer.id) %>
               <%= link_to shop_favorite_path(@shop.id, favorite.id), method: :delete do %>
-                <i class="fas fa-heart" style="color: #5A3E26;"></i><font color="#5A3E26"><%= @shop.favorites.count %></font>
+                <i class="fas fa-heart" style="color: #cc6666;"></i><font color="#cc6666"><%= @shop.favorites.count %></font>
               <% end %>
             </p>
           <% else %>
             <p class="fav-inline">
               <%= link_to shop_favorites_path(@shop), method: :post do %>
-                <i class="far fa-heart" style="color: #5A3E26;"></i><%= @shop.favorites.count %>
+                <i class="far fa-heart" style="color: #cc6666;"></i><font color="#cc6666"><%= @shop.favorites.count %></font>
               <% end %>
             </p>
           <% end %>
@@ -28,13 +29,13 @@
             <p class="fav-inline">
               <% candidate = @shop.candidates.find_by(customer_id: current_customer.id) %>
               <%= link_to shop_candidate_path(@shop.id, candidate.id), method: :delete do %>
-                <i class="fas fa-bookmark" style="color: #5A3E26;"></i><%= @shop.candidates.count %>
+                <i class="fas fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= @shop.candidates.count %></font>
               <% end %>
             </p>
           <% else %>
             <p class="fav-inline">
               <%= link_to shop_candidates_path(@shop), method: :post do %>
-                <i class="far fa-bookmark" style="color: #5A3E26;"></i><%= @shop.candidates.count %>
+                <i class="far fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= @shop.candidates.count %></font>
               <% end %>
             </p>
           <% end %>
@@ -52,29 +53,31 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="row">
+   <div class="shop-contents mt-5">
     <ul class="tab-list">
       <li class="tab box-active">写真</li>
       <li class="tab box-active">口コミ</li>
-      <li class="tab box-active">アクセス</li>
     </ul>
 
     <div class="tabbox-contents">
       <div class="tabbox box-show">
       <div class="d-flex flex-wrap">
+
         <% @shop.comments.each do |comment| %>
-        <div class="comment-image">
-          <div class="col-md-2">
-          <div class="comment-image">
-            <p><%= attachment_image_tag(comment, :image, size: "260x260", class: "img-show") %></p>
-          </div>
-      　</div>
+
+          <div class="col-md-3 p-2">
+
+            <p><%= attachment_image_tag(comment, :image, :fill, 300,300, format: 'jpeg', class: "comment-img") %></p>
+
+
       　</div>
         <% end %>
       </div>
       </div>
 
       <div class="tabbox">
+        <div class="m-5">
         <%= form_with model:[@shop, @comment], local: true do |f| %>
         <p>
           <div>画像選択</div>
@@ -102,6 +105,7 @@
 
 
         <% @shop.comments.each do |comment| %>
+          <div class="comment-item">
           <p>
             <span>評価：</span>
             <span id="star-rate-<%= comment.id %>"></span>
@@ -119,17 +123,29 @@
             <%= comment.rate %>
           </p>
           <p><%#= attachment_image_tag(comment, :image, size: "350x230") %></p>
-          <p><%= comment.comment %></p>
+          <p><%= comment.customer.name %></p>
+          <p>
+            <%= comment.comment %>
+            <% if comment.customer == current_customer %>
+              <%= link_to shop_comment_path(@shop.id, comment.id), method: :delete, data: {confirm: '口コミを削除します'} do %>
+              <i class="fas fa-trash-alt fa-lg" style="color: #5A3E26;"></i>
+              <% end %>
+            <% end %>
+          </p>
           <p><%# if comment.customer == current_user %><%#= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %><%# end %></p>
+          </div>
         <% end %>
       </div>
+    </div>
 
-      <div class="tabbox">
-        <p>マップ</p>
-        <p></p>
-        <p></p>
-      </div>
+
 
     </div>
-  <%= link_to "店舗一覧へ戻る", shops_path, class: "btn btn-outline-secondary" %>
+
+
+  <div class="mt-4">
+    <%= link_to "店舗一覧へ戻る", shops_path, class: "btn btn-outline-secondary" %>
+  </div>
+  </div>
+  </div>
 </div>

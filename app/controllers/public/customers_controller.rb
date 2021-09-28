@@ -8,9 +8,16 @@ class Public::CustomersController < ApplicationController
     @candidates = @customer.candidates
     #@favorites = Favorite.where(shop_id: @shop.id)
     #@favorites_shop = Customer.find_by(id: @favorites.shop_id)
+
   end
 
-  def edit
+  def update
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer.id)
+    else
+      render :show
+    end
   end
 
   def quit

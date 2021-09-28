@@ -78,8 +78,10 @@ ActiveRecord::Schema.define(version: 2021_09_23_084732) do
   end
 
   create_table "faqs", force: :cascade do |t|
-    t.string "title"
-    t.string "body"
+    t.string "frequently"
+    t.string "question"
+    t.integer "admin_id"
+    t.integer "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
