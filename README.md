@@ -26,7 +26,7 @@
 [ER図](https://drive.google.com/file/d/18gG3WWLAsSfrmtuPzKTJaYObxISeVW5N/view?usp=sharing)<br>
 [テーブル定義書](https://docs.google.com/spreadsheets/d/1gXt_O8GVXwj2GYjczl9xJEzlCYtNCsh1VMngn4sZSJY/edit?usp=sharing)<br>
 [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1A8ufK7MgL9mPkDmC7hk-fm7x6Gh0g6AlG6AiwDLhqbM/edit?usp=sharing) <br>
-[チャレンジテーマ](https://docs.google.com/spreadsheets/d/1HJhnvABaKO40oqDQ__w2ikotALztzDuUY-lSwtLTRtY/edit?usp=sharing)
+[チャレンジ要素]()
 
 ## 開発環境
 - OS：Linux(CentOS)
