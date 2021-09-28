@@ -9,7 +9,9 @@
     </div>
     <div class="col-md-6">
       <div>
-        <h3 class="shop-name"><strong><%= @shop.name %></strong></h3>
+        <h3 class="shop-name"><strong><%= @shop.name %></strong>
+            <div class="average-review-rating" data-score=<%= (@shop.comments.average(:rate)) %>></div>
+        </h3>
         <div class="shop-item">
           <% if @shop.favorited_by?(current_customer) %>
             <p class="fav-inline" style="color: #5A3E26">
@@ -66,7 +68,7 @@
 
         <% @shop.comments.each do |comment| %>
 
-          <div class="col-md-3 p-2">
+          <div class="col-md-3 p-1">
 
             <p><%= attachment_image_tag(comment, :image, :fill, 300,300, format: 'jpeg', class: "comment-img") %></p>
 
@@ -149,3 +151,16 @@
   </div>
   </div>
 </div>
+
+<script>
+  <%# eachの中にscriptタグを入れる場合はIDの指定をしないと複数のscriptタグが生成されてしまう %>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
