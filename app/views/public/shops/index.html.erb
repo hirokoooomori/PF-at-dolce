@@ -1,64 +1,25 @@
 <div class="container">
-
+  <div class="mt-5">
   <div class="row">
-
-    <div class="col-md-4">
-
-      <table class="table table-bordered genre-table table-hover" width="60">
-        <thead>
-          <tr class="genre-title">
-            <th><strong>エリアから探す</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-
-        <% Area.all.each do |area| %>
-          <tr>
-            <td>
-              <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area"),class:"genre-link" %>
-            </td>
-          </tr>
-        <% end %>
-
-        </tbody>
-      </table>
-
-      <table class="table table-bordered genre-table table-hover">
-        <thead>
-          <tr class="genre-title">
-            <th><strong>雰囲気から探す</strong></th>
-          </tr>
-        </thead>
-        <tbody>
-        <% Atmosphere.all.each do |atmosphere| %>
-          <tr>
-            <td>
-              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match",'search[target]': "atmosphere"),class:"genre-link" %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+    <div class="col-md-4 col-sm-4">
+      <%= render 'genre', shop: @shop %>
     </div>
-
-    <div class="col-md-7">
+    <div class="col-md-7 col-sm-7">
       <div class="ml-5">
       <h4 class="index-title"><i class="fas fa-store" style="color: #5A3E26;"></i><strong>  店舗一覧</strong></h4>
       <% @shops.each do |shop| %>
       <% @shop = shop %>
       <div class="container">
         <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
           <%= link_to shop_path(shop), class: "btn-link" do %>
-            <div class="img-thumbnail shop-image">
-              <%= attachment_image_tag shop, :image, format: 'jpeg', class: "shop-img" %>
+            <div class="shop-image">
+              <%= attachment_image_tag shop, :image, format: 'jpeg', class: "shop-img rounded img-fluid" %>
             </div>
                     <%# カラムはimage_idだがrefileの仕様でidは書かない %>
           <% end %>
         </div>
-        <div class="col-6">
-
-
+        <div class="col-md-6">
           <div class="shop-detail">
             <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
             <div id="favorite_shop_<%= shop.id %>" class="favorite-candidate">
@@ -84,7 +45,7 @@
     </div>
 
   </div>
-
+  </div>
   <div class="row">
     <div class="col-md-3">
       <div class="pagination" style="text-align:center"><%= paginate(@shops) %></div>

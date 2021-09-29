@@ -1,80 +1,62 @@
-<dev class="container">
+<div class="container">
+  <div class="mt-5">
   <div class="row">
-    <div class="col-md-4">
-
-      <table class="table table-bordered genre-table">
-        <thead>
-          <tr>
-            <th>エリアから探す</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% Area.all.each do |area| %>
-
-          <tr>
-            <td>
-              <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area") %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-
-      <table class="table table-bordered genre-table">
-        <thead>
-          <tr>
-            <th>雰囲気から探す</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% Atmosphere.all.each do |atmosphere| %>
-
-          <tr>
-            <td>
-              <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match", 'search[target]': "atmosphere") %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-
+    <div class="col-md-4 col-sm-4">
+      <%= render 'public/shops/genre', shop: @shop %>
     </div>
-    <div class="col-md-8">
-      <div class="row">
-        <h4>店舗一覧</h4>
-        <div>
-
-          <% @shops.each do |shop| %>
-          <%# @shops.each do |shop| %>
-          <div class="img-thumbnail">
-  			    <div class="col-md-5">
-  			      <div class="col-md-5 shop-image">
-                <%= link_to shop_path(shop), class: "btn-link" do %>
-                  <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220" %>
-                  <%# カラムはimage_idだがrefileの仕様でidは書かない %>
-                <% end %>
+    <div class="col-md-7 col-sm-7">
+      <div class="ml-5">
+        <h4 class="index-title"><i class="fas fa-store" style="color: #5A3E26;"></i><strong>  店舗一覧</strong></h4>
+        <% @shops.each do |shop| %>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <%= link_to shop_path(shop), class: "btn-link" do %>
+                <div class="shop-image">
+                  <%= attachment_image_tag shop, :image, format: 'jpeg', class: "shop-img rounded img-fluid" %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <div class="shop-detail">
+                <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
+                <div id="favorite_shop_<%= shop.id %>" class="favorite-candidate">
+                  <%= render 'public/shops/favorite', shop: shop %>
+                </div>
+                <div id="candidate_shop_<%= shop.id %>" class="favorite-candidate">
+                  <%= render 'public/shops/candidate', shop: shop %>
+                </div>
+                <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div>
+                営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
+                販売形式
+                <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %><br>
+                予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
+                エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
+                店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
               </div>
             </div>
-            <div class="col-md-7 shop-item">
-              <div id="favorite_shop_<%= shop.id %>">
-                <%= render 'public/shops/favorite', shop: shop %>
-              </div>
-              <div id="candidate_shop_<%= shop.id %>">
-                <%= render 'public/shops/candidate', shop: shop %>
-              </div>
-              <h5><span>店名  <%= shop.name %></span></h5>
-              <p>営業日  <%= shop.business_day %></p>
-              <p>販売形式<a>  </a>
-                <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %>
-              </p>
-              <p>予算  <%= shop.budget %></p>
-              <p>エリア  <%= shop.area.name %></p>
-              <p>店舗ジャンル  <%= shop.atmosphere.atmosphere %></p>
             </div>
-            </div>
+          </div>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-</dev>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="pagination" style="text-align:center"><%= paginate(@shops) %></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>

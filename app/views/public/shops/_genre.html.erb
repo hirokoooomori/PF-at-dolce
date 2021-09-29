@@ -1,0 +1,33 @@
+<table class="table table-bordered genre-table table-hover" width="60">
+  <thead>
+    <tr class="genre-title">
+      <th><strong>エリアから探す</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Area.all.each do |area| %>
+      <tr>
+        <td>
+          <%= link_to area.name, search_path('search[value]': area.id, 'search[how]': "match",'search[target]': "area"),class:"genre-link" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table table-bordered genre-table table-hover">
+  <thead>
+    <tr class="genre-title">
+      <th><strong>雰囲気から探す</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% Atmosphere.all.each do |atmosphere| %>
+    <tr>
+      <td>
+        <%= link_to atmosphere.atmosphere, search_path('search[value]': atmosphere.id, 'search[how]': "match",'search[target]': "atmosphere"),class:"genre-link" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

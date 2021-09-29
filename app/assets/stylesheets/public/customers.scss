@@ -13,6 +13,11 @@ html,body,h1,h2,h3,h4,ul,ol,dl,li,dt,dd,p,div,span,img,a,table,tr,th,td {
   list-style: none;
 }
 
+ul {
+  //padding-left: initial;
+  //margin-bottom: initial;
+}
+
 .container {
   margin: 10px;
 
@@ -70,4 +75,12 @@ html,body,h1,h2,h3,h4,ul,ol,dl,li,dt,dd,p,div,span,img,a,table,tr,th,td {
 
 .img-btn:hover {
   opacity: 1;
+}
+
+.contents-title {
+
+}
+
+.comment-item {
+  background: white;
 }

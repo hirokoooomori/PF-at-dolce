@@ -33,51 +33,75 @@
             <div class="tabbox box-show" id="tab-favorites">
               <% @favorites.each do |favorite| %>
               <% shop = favorite.shop %>
-               <div class="col-md-4">
-                  <p>
-                    <%= link_to shop_path(shop), class: "btn-link" do %>
-                      <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220" %>
-                    <% end %>
-                  </p>
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>
+                      <%= link_to shop_path(shop), class: "btn-link" do %>
+                        <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220", class: "img-fluid" %>
+                      <% end %>
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
+                    <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
+                    営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
+                    販売形式
+                    <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %><br>
+                    予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
+                    エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
+                    店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
+                  </div>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <p><h5><span>店名  <%= shop.name %></span></h5></p>
-                  <p>営業日  <%= shop.business_day %></p>
-                  <p>販売形式<a>  </a>
-                    <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %>
-                  </p>
-                  <p>予算  <%= shop.budget %></p>
-                  <p>エリア  <%= shop.area.name %></p>
-                  <p>店舗ジャンル  <%= shop.atmosphere.atmosphere %></p>
-                </div>
-              <% end %>
-            </div>
+                <% end %>
+              </div>
 
 
             <div class="tabbox" id="tab-candidates">
               <% @candidates.each do |candidate| %>
               <% shop = candidate.shop %>
-                <p>
-                  <%= link_to shop_path(shop), class: "btn-link" do %>
-                    <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220" %>
-                  <% end %>
-                </p>
-                <p><h5><span>店名  <%= shop.name %></span></h5></p>
-                <p>営業日  <%= shop.business_day %></p>
-                <p>販売形式<a>  </a>
-                  <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %>
-                </p>
-                <p>予算  <%= shop.budget %></p>
-                <p>エリア  <%= shop.area.name %></p>
-                <p>店舗ジャンル  <%= shop.atmosphere.atmosphere %></p>
+              <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <p>
+                    <%= link_to shop_path(shop), class: "btn-link" do %>
+                      <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220", class: "img-fluid" %>
+                    <% end %>
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
+                  <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
+                  営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
+                  販売形式
+                  <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %><br>
+                  予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
+                  エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
+                  店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
+                </div>
+                </div>
+                </div>
               <% end %>
             </div>
 
             <div class="tabbox" id="tab-comments">
               <% @comments.each do |comment| %>
-              <p><%= attachment_image_tag(comment, :image, size: "150x100") %></p>
-              <p><%= comment.comment %></p>
-              <p><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></p>
+              <div class="container">
+                <div class="row">
+                  <div class="comment-item p-5 my-4">
+                    <div class="col-md-4">
+                      <p><%= attachment_image_tag(comment, :image, size: "150x100") %></p>
+                    </div>
+                    <div class="col-md-8">
+                      <p><strong><%= comment.shop.name %></strong></p>
+                      <p><%= comment.comment %></p>
+                      <p><%= comment.created_at %></p>
+                      <p><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <% end %>
             </div>
 
@@ -87,3 +111,16 @@
     </div>
 
 </div>
+
+<script>
+  <%# eachの中にscriptタグを入れる場合はIDの指定をしないと複数のscriptタグが生成されてしまう %>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
