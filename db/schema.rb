@@ -100,15 +100,6 @@ ActiveRecord::Schema.define(version: 2021_09_23_084732) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.string "image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "shop_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "shop_id"
@@ -129,21 +120,7 @@ ActiveRecord::Schema.define(version: 2021_09_23_084732) do
     t.float "rate", null: false
   end
 
-  create_table "shop_genre_names", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "shop_genres", force: :cascade do |t|
-    t.integer "shop_id"
-    t.integer "shop_genre_name_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "shops", force: :cascade do |t|
-    t.integer "product_id"
     t.integer "comment_id"
     t.string "name"
     t.string "image_id"
@@ -157,8 +134,6 @@ ActiveRecord::Schema.define(version: 2021_09_23_084732) do
     t.integer "area_id"
     t.integer "atmosphere_id"
     t.datetime "updated_at", null: false
-    t.string "status"
-    t.integer "customer_id"
   end
 
 end
