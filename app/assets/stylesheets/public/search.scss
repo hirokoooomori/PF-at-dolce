@@ -1,3 +1,30 @@
 // Place all the styles related to the public::search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ 
+ 
+
+ .index-title {
+   color: #4d4d4d;
+
+ }
+
+ .favorite-candidate {
+   display: inline-block;
+ }
+
+ .shop-name {
+   color: #4d4d4d;
+ }
+
+ .image {
+  // width: 100%;
+  // height: 100%;
+   object-fit: cover;
+ }
+
+ .shop-img {
+   width: 320px;
+   height: 220px;
+   object-fit: cover;
+ }

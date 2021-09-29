@@ -8,9 +8,7 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
 
 
-    resources :shops do
-      resources :products
-    end
+    resources :shops
     resources :customers
     resources :genres
     resources :areas

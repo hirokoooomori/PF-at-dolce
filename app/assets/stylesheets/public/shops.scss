@@ -55,12 +55,6 @@ html,body,h1,h2,h3,h4,ul,ol,dl,li,dt,dd,p,div,span,img,a,table,tr,th,td {
   display: block;
 }
 
-// shop-image {
-//   display: inline-block;
-// }
-
-
-
 .comment-img {
   width: 100%;
   // height: 300px;
@@ -75,31 +69,20 @@ shop-item {
   display: inline-block;
 }
 
-.item {
-  color: linear-gradient(#af611c, #5a3e26);
-}
-
 .comment-item {
   background: white;
 }
 
 //index.html.erb
 
-
-
 .genre-title {
   background-color: #b3947d;
   color: white;
   margin: 100px;
-  // background-color: #af611c;
 }
 
 .genre-table {
   color: #4d322e;
-
-//   border-collapse:separate;
-//   border-spacing: 5px;
-//   width: 100%;
  }
 
  .genre-link {
@@ -132,25 +115,16 @@ shop-item {
    object-fit: cover;
  }
 
-// .genre-table th {
-//   border-radius: 5px;
-//   text-align: center;
-//   padding: 10px 0;
-// }
+ .button {
+  padding: 2px 20px;
+  color: white;
+  background: #668ad8;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+  font-weight: bold;
+ }
 
-// .genre-table td {
-//   border-radius: 5px;
-//   text-align: center;
-//   padding: 10px 0;
-// }
-
-// .genre-table th {
-//   background-color: #c79852;
-//   color: white;
-//   border:solid 1px #927141;
-// }
-
-// .genre-table td {
-//   background-color: #e4d4bc;
-//   border:solid 1px #af9d85;
-// }
+.button:hover {
+  opacity: 1;
+}
