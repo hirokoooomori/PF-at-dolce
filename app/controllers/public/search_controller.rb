@@ -1,13 +1,11 @@
 class Public::SearchController < ApplicationController
 
   def search
-
     @value = params["search"]["value"]
-
     @how = params["search"]["how"]
     @target = params["search"]["target"]
-    @shops = search_for(@how, @value, @target)
-    @shops = Shop.all.page(params[:page]).per(5)
+    shops = search_for(@how, @value, @target)
+    @shops = shops.page(params[:page]).per(1)
   end
 
   private

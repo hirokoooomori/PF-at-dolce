@@ -1,52 +1,51 @@
-<div><h3>店舗新規登録</h3></div>
-
-<%= form_with model: @shop, url: admin_shops_path, local: true do |f| %>
-  <table class="table">
-    <tr>
-      <td>店舗名</td>
-      <td><%= f.text_field :name %></td>
-    </tr>
-
-    <tr>
-      <td>店舗画像</td>
-      <td><%= f.file_field :image, id: :image_id %></td>
-    </tr>
-
-    <tr>
-      <td>営業日</td>
-      <td><%= f.text_field :business_day %></td>
-    </tr>
-
-    <tr>
-      <td>販売形式</td>
-      <td>
-        <a><input type="checkbox" name="status[eat_in]" value="1">イートイン</a>
-        <a><input type="checkbox" name="status[take_out]" value="1">テイクアウト</a>
-      </td>
-    </tr>
-
-    <tr>
-      <td>予算</td>
-      <td><%= f.text_field :budget %>円</td>
-    </tr>
-
-    <tr>
-      <td>エリア</td>
-      <th><%= f.collection_select :area_id, Area.all, :id, :name,{prompt: "選択してください"} %></th>
-    </tr>      <%# Area.allの中から選択したarea_id(ジャンル)に:idでIDを与える %>
-
-    <tr>
-      <td>雰囲気ジャンル</td>
-      <th><%= f.collection_select :atmosphere_id, Atmosphere.all, :id, :atmosphere,{prompt: "選択してください"} %></th>
-    </tr>
-
-  </table>
-
-    <div class="text-center">
-      <br><%= f.submit "新規登録", class: "btn btn-sm btn-block btn-info" %>
+<% if admin_signed_in? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 mx-auto mt-5">
+        <h3><strong>店舗新規登録</strong></h3>
+          <%= form_with model: @shop, url: admin_shops_path, local: true do |f| %>
+            <table class="table">
+              <tr>
+                <td>店舗名</td>
+                <td><%= f.text_field :name %></td>
+              </tr>
+              <tr>
+                <td>店舗画像</td>
+                <td><%= f.file_field :image, id: :image_id %></td>
+              </tr>
+              <tr>
+                <td>営業日</td>
+                <td><%= f.text_field :business_day %></td>
+              </tr>
+              <tr>
+                <td>販売形式</td>
+                <td>
+                  <a><input type="checkbox" name="status[eat_in]" value="1">イートイン</a>
+                  <a><input type="checkbox" name="status[take_out]" value="1">テイクアウト</a>
+                </td>
+              </tr>
+              <tr>
+                <td>予算</td>
+                <td><%= f.text_field :budget %>円</td>
+              </tr>
+              <tr>
+                <td>エリア</td>
+                <th><%= f.collection_select :area_id, Area.all, :id, :name,{prompt: "選択してください"} %></th>
+              </tr>      <%# Area.allの中から選択したarea_id(ジャンル)に:idでIDを与える %>
+              <tr>
+                <td>雰囲気ジャンル</td>
+                <th><%= f.collection_select :atmosphere_id, Atmosphere.all, :id, :atmosphere,{prompt: "選択してください"} %></th>
+              </tr>
+            </table>
+              <div class="text-center">
+                <br><%= f.submit "新規登録", class: "btn btn-outline-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-
-  <% end %>
   </div>
-</div>
-
+<% else %>
+  管理者専用ページです
+<% end %>

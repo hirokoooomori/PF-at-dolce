@@ -1,18 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md">
-      <h3>お問い合わせ一覧</h3>
-
-      <div class="align-items-center">
-      <% @contacts.each do |contact| %>
-        <div class="m">
-        【会員】<%= contact.name %><br>
-        【お問い合わせ内容】<br>
-        <span style="white-space: pre-wrap;"><%= contact.message %></span><br>
-        <%= link_to " FAQ作成", new_admin_contact_faq_path(contact.id), class: "btn btn-primary" %>
-        </div>
-      <% end %>
+<% if admin_signed_in? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 mx-auto mt-5">
+        <h3><strong>お問い合わせ一覧</strong></h3>
+          <div>
+            <% @contacts.each do |contact| %>
+              <div class="my-4">
+                【会員】<%= contact.name %><br>
+                【お問い合わせ内容】<br>
+                <span style="white-space: pre-wrap;"><%= contact.message %></span><br>
+                <%= link_to " FAQ作成", new_admin_contact_faq_path(contact.id), class: "btn btn-outline-primary" %>
+              </div>
+            <% end %>
+          </div>
       </div>
     </div>
   </div>
-</div>
+<% else %>
+  管理者専用ページです
+<% end %>

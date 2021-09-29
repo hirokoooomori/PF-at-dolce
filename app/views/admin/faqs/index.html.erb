@@ -1,32 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md">
-      <h3>FAQ一覧</h3>
-      <table class="table">
-        <div>
-          
-        <% @faqs.each do |faq| %>
-          <div class="m-2">
-            <tr>
-              <td>【会員】</td>
-              <td><%= @contact.name %></td>
-            </tr>
-            <tr>
-              <td>【Q】</td>
-              <td><span style="white-space: pre-wrap;"><%= faq.frequently %></span></td>
-            </tr>
-            <tr>
-              <td>【A】</td>
-              <td><span style="white-space: pre-wrap;"><%= faq.question %></span></td>
-            </tr>
-          
-          
-          
-          <%#= link_to " FAQ削除", admin_contact_faq_path(contact.id, params[:id]), class: "btn btn-primary" %>
+<% if admin_signed_in? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 mx-auto mt-5">
+        <h3><strong>FAQ一覧</strong></h3>
+        <table class="table mt-4">
+          <div>
+            <% @faqs.each do |faq| %>
+              <div class="m-2">
+                <tr>
+                  <td>【会員】</td>
+                  <td><%= @contact.name %></td>
+                </tr>
+                <tr>
+                  <td>【Q】</td>
+                  <td><span style="white-space: pre-wrap;"><%= faq.frequently %></span></td>
+                </tr>
+                <tr>
+                  <td>【A】</td>
+                  <td><span style="white-space: pre-wrap;"><%= faq.question %></span></td>
+                </tr>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-        </div>
-      </table>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  管理者専用ページです
+<% end %>

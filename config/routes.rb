@@ -8,14 +8,14 @@ Rails.application.routes.draw do
     get 'homes/top' => 'homes#top'
 
 
-    resources :shops
+    resources :shops, only: [:index, :edit, :new, :create, :destroy, :update]
     resources :customers
     resources :genres
     resources :areas
     resources :atmospheres
     resources :scores
     resources :comments
-    resources :contacts do
+    resources :contacts, only: [:index] do
       resources :faqs
     end
   end
