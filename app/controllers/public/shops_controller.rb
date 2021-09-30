@@ -1,7 +1,7 @@
 class Public::ShopsController < ApplicationController
 
   def index
-    @shops = Shop.all.page(params[:page]).per(1)
+    @shops = Shop.all.page(params[:page]).per(5)
     #@shop = Shop.find(params[:id])
     #@comments = @shop.comment
     #candidate = Candidate.find(params[:id])

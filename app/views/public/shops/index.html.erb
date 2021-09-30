@@ -28,7 +28,7 @@
             <div id="candidate_shop_<%= shop.id %>" class="favorite-candidate">
               <%= render 'candidate', shop: shop %>
             </div>
-            <div class="average-review-rating" data-score=<%#= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
+            <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
 
             営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
             販売形式
