@@ -1,4 +1,4 @@
-<%# if admin_signed_in? %>
+<% if admin_signed_in? %>
   <div class="container">
     <div class="row">
       <div class="col-md-12 mx-auto mt-5">
@@ -11,7 +11,6 @@
                 <p class="mb-3"><%= attachment_image_tag shop, :image, format: 'jpeg', size: "300x220" %></p>
                   <div>
                     <h5><strong>店名<a>  </a><%= shop.name %></strong>
-                    <%#= button_to "編集", {controller: 'shops', action: 'update'},{method: :get} %>
                     <%= link_to "編集", edit_admin_shop_path(shop), class: "btn btn-outline-primary" %>
                     <%= link_to " 削除", admin_shop_path(shop), method: :delete, data: {confirm: "#{shop.name}を削除しますか？"}, class: "btn btn-danger" %>
                     </h5>
@@ -31,6 +30,6 @@
       </div>
     </div>
   </div>
-<%# else %>
-  <!--管理者専用ページです-->
-<%# end %>
+<% else %>
+  管理者専用ページです
+<% end %>
