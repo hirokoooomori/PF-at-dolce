@@ -24,8 +24,8 @@
               <tr>
                 <td>販売形式</td>
                 <td>
-                  <a><input type="checkbox" name="status[eat_in]" value="1">イートイン</a>
-                  <a><input type="checkbox" name="status[take_out]" value="1">テイクアウト</a>
+                  <a><input type="checkbox" name="status[eat_in]" value="1" <%#= "checked='checked'" if @shop.status.include?(1) %>>イートイン</a>
+                  <a><input type="checkbox" name="status[take_out]" value="1" <%#= "checked='checked'" if @shop.status.include?(1) %>>テイクアウト</a>
                 </td>
               </tr>
               <tr>
