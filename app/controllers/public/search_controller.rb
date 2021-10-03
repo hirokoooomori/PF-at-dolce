@@ -32,13 +32,6 @@ class Public::SearchController < ApplicationController
     else
       partical(value)
     end
-
-    # case how
-    # when 'match'
-    #   match(value, target)
-    # else
-    #   partical(value)
-    # end
   end
 
 end

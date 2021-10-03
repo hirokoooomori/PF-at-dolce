@@ -2,20 +2,12 @@ class Public::ShopsController < ApplicationController
 
   def index
     @shops = Shop.all.page(params[:page]).per(5)
-    #@shop = Shop.find(params[:id])
-    #@comments = @shop.comment
-    #candidate = Candidate.find(params[:id])
-
-    #@areas =@shops.area
-    # @shops.each do |shop|
-    # area = shop.area
   end
 
   def show
     @comment = Comment.new
     @shop = Shop.find(params[:id])
     @comments = @shop.comments.order(created_at: :desc)#:desc = 降順
-    #@score = Score.new
   end
 
   private

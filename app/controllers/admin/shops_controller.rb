@@ -24,20 +24,24 @@ class Admin::ShopsController < ApplicationController
   end
 
   def update
+    byebug
     @shop = Shop.find(params[:id])
-    @shop.update(shop_params)
-    redirect_to admin_shop_path, notice: "更新しました"
+    # if eat_in.include? || take_out.include?
+    #if status.include?
+      @shop.update(shop_params)
+      redirect_to admin_shops_path, notice: "更新しました"
+    # else
+    #   redirect_to request.refere, notice: "チェックボックスは1つ以上選択してください"
+    # end
   end
 
   def destroy
-    byebug
+
     @shop = Shop.find(params[:id])
     @shop.destroy
 
-    redirect_to admin_shop_path, notice: "削除しました"
+    redirect_to admin_shops_path, notice: "削除しました"
   end
-
-end
 
   private
 
@@ -46,3 +50,5 @@ end
     take_out = params[:status][:take_out].present? ? params[:status][:take_out] : "0"
     params.require(:shop).permit(:name, :image, :business_day, :budget, :area_id, :atmosphere_id, :atmosphere).merge(eat_in: eat_in, take_out: take_out)
   end
+
+end

@@ -1,4 +1,7 @@
 class Shop < ApplicationRecord
+  
+
+  
   has_many :candidates, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
