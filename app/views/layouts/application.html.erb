@@ -1,91 +1,81 @@
 <!DOCTYPE html>
 <html>
   <body>
+    <head>
+      <title>AtDolce</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <!-- bootstrapのバージョンを変えたらいらないコード begin -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+      <!-- bootstrapのバージョンを変えたらいらないコード end -->
 
-  <head>
-    <title>AtDolce</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- bootstrapのバージョンを変えたらいらないコード begin -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <!-- bootstrapのバージョンを変えたらいらないコード end -->
-
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-  </head>
-
-  <header class="fixed-top">
-
-
-
-   <div class="mx-3">
-    <nav class="navbar navbar-expand-md navbar-light" >
-
-      <div class="nav navbar-nav navbar-left" >
-        <div class="logo">
-        <% if admin_signed_in? %>
-
-          <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), admin_homes_top_path, class: "text-dark" %>
-        <% else %>
-          <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), root_path, class: "text-dark" %>
-        <% end %>
-        </div>
-      </div>
-
-    <% if customer_signed_in? %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" style="padding-left:0.5rem"><%= link_to "トップ", root_path, class: 'link'%></li>
-        <li class="nav-item" style="padding-left:0.5rem"><%= link_to "マイページ", customer_path(current_customer), class: 'link'%></li>
-        <li class="nav-item" style="padding-left:0.5rem"><%= link_to "店舗一覧", shops_path, class: 'link'%></li>
-        <li class="nav-item" style="padding-left:0.5rem"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
-        <li class="nav-item" style="padding-left:0.5rem"><%= link_to "FAQ",faqs_path, class: 'link' %></li>
-        <li class="nav-item" style="padding-left:0.5rem"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
-        <li class="nav-item form-inline" style="padding-left:0.5rem">
-          <%= form_with url: search_path, method: :get, local: true do |f| %>
-            <%= f.text_field 'search[value]', placeholder: "店舗名を入力" %>
-            <span class="search-button text-right">
-              <%= f.button :type => "search", style: 'border-style: none;', class: "search-button btn-outline-secondary" do %>
-                <i class="fas fa-search"></i>
-              <% end %>
-            </span>
+      <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    </head>
+    <header class="fixed-top">
+     <div class="mx-3">
+      <nav class="navbar navbar-expand-md navbar-light" >
+        <div class="nav navbar-nav navbar-left" >
+          <div class="logo">
+          <% if admin_signed_in? %>
+            <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), admin_homes_top_path, class: "text-dark" %>
+          <% else %>
+            <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), root_path, class: "text-dark" %>
           <% end %>
-        </li>
-      </ul>
-    <% elsif admin_signed_in? %>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item pr-2"><%= link_to "トップ", admin_homes_top_path, class: 'link'%></li>
-        <li class="nav-item pr-2"><%= link_to "会員一覧", admin_customers_path, class: 'link'%></li>
-        <li class="nav-item pr-2"><%= link_to "店舗管理", admin_shops_path, class: 'link' %></li>
-        <li class="nav-item pr-2"><%= link_to "ジャンル管理", admin_genres_path, class: 'link' %></li>
-        <li class="nav-item pr-2"><%= link_to "お問い合わせ確認", admin_contacts_path, class: 'link' %></li>
-        <li class="nav-item pr-2"><%= link_to "ログアウト", admins_sign_out_path, method: :delete, class: 'link'%></li>
-      </ul>
-     </div>
-     <% else %>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><%= link_to " 新規登録", new_customer_registration_path, class: 'link'%></li>
-          <li class="nav-item"><%= link_to " ログイン", new_customer_session_path, class: 'link' %></li>
-        </ul>
+          </div>
+        </div>
+          <% if customer_signed_in? %>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "トップ", root_path, class: 'link'%></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "マイページ", customer_path(current_customer), class: 'link'%></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "店舗一覧", shops_path, class: 'link'%></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "FAQ",faqs_path, class: 'link' %></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
+              <li class="nav-item form-inline" style="padding-left:0.5rem">
+                <%= form_with url: search_path, method: :get, local: true do |f| %>
+                  <%= f.text_field 'search[value]', placeholder: "店舗名を入力" %>
+                  <span class="search-button text-right">
+                    <%= f.button :type => "search", style: 'border-style: none;', class: "search-button btn-outline-secondary" do %>
+                      <i class="fas fa-search"></i>
+                    <% end %>
+                  </span>
+                <% end %>
+              </li>
+            </ul>
+          <% elsif admin_signed_in? %>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item pr-2"><%= link_to "トップ", admin_homes_top_path, class: 'link'%></li>
+              <li class="nav-item pr-2"><%= link_to "会員一覧", admin_customers_path, class: 'link'%></li>
+              <li class="nav-item pr-2"><%= link_to "店舗管理", admin_shops_path, class: 'link' %></li>
+              <li class="nav-item pr-2"><%= link_to "ジャンル管理", admin_genres_path, class: 'link' %></li>
+              <li class="nav-item pr-2"><%= link_to "お問い合わせ確認", admin_contacts_path, class: 'link' %></li>
+              <li class="nav-item pr-2"><%= link_to "ログアウト", admins_sign_out_path, method: :delete, class: 'link'%></li>
+            </ul>
+          </div>
+          <% else %>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><%= link_to " 新規登録", new_customer_registration_path, class: 'link'%></li>
+              <li class="nav-item"><%= link_to " ログイン", new_customer_session_path, class: 'link' %></li>
+            </ul>
+          </div>
+          <% end %>
+        </nav>
       </div>
-     <% end %>
-     </nav>
-     </div>
-  </header>
-
-  <main >
-    <% if flash[:notice] %>
-      <div class="alert alert-primary text-center" role="alert"><strong><%= notice %></strong></div>
-    <% end %>
-    <% if flash[:alert] %>
-      <div class="alert alert-danger text-center" role="alert"><strong><%= alert %></strong></div>
+    </header>
+    <main >
+      <% if flash[:notice] %>
+        <div class="alert alert-primary text-center" role="alert"><strong><%= notice %></strong></div>
       <% end %>
-    <%= yield %>
-  </main>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger text-center" role="alert"><strong><%= alert %></strong></div>
+        <% end %>
+      <%= yield %>
+    </main>
     <!-- bootstrapのバージョンを変えたらいらないコード begin -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
@@ -101,16 +91,16 @@ function isScrollBar() {
 //  console.log("footer:" + document.getElementById('footer').offsetHeight);
 }
 */
-window.addEventListener('DOMContentLoaded', (event) => {
-  var $ftr = $('#footer'); // footerのエレメントを取得
-  // 画面の高さ > フッターの位置 + フッターのサイズの場合
-  // フッターの位置が画面の高さを超えない場合
-  if (window.innerHeight > $ftr.offset().top + $ftr.outerHeight()) {
-    // フッターの位置を一番下に固定する。
-    document.getElementById('footer').style.bottom = 0;
-  }
-//  setInterval(isScrollBar, 1000);
-});
+// window.addEventListener('DOMContentLoaded', (event) => {
+//   var $ftr = $('#footer'); // footerのエレメントを取得
+//   // 画面の高さ > フッターの位置 + フッターのサイズの場合
+//   // フッターの位置が画面の高さを超えない場合
+//   if (window.innerHeight > $ftr.offset().top + $ftr.outerHeight()) {
+//     // フッターの位置を一番下に固定する。
+//     document.getElementById('footer').style.bottom = 0;
+//   }
+// //  setInterval(isScrollBar, 1000);
+// });
 </script>
   <footer id="footer">
     <div>

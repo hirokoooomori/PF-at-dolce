@@ -24,7 +24,7 @@ class Admin::ShopsController < ApplicationController
   end
 
   def update
-    byebug
+
     @shop = Shop.find(params[:id])
     # if eat_in.include? || take_out.include?
     #if status.include?
@@ -46,9 +46,10 @@ class Admin::ShopsController < ApplicationController
   private
 
   def shop_params
-    eat_in = params[:status][:eat_in].present? ? params[:status][:eat_in] : "0"
-    take_out = params[:status][:take_out].present? ? params[:status][:take_out] : "0"
-    params.require(:shop).permit(:name, :image, :business_day, :budget, :area_id, :atmosphere_id, :atmosphere).merge(eat_in: eat_in, take_out: take_out)
+
+    #eat_in = params[:status][:eat_in].present? ? params[:status][:eat_in] : "0"
+    #take_out = params[:status][:take_out].present? ? params[:status][:take_out] : "0"
+    params.require(:shop).permit(:name, :image, :business_day, :budget, :area_id, :atmosphere_id, :atmosphere, :eat_in, :take_out)
   end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_23_084732) do
+ActiveRecord::Schema.define(version: 2021_10_05_115227) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -125,8 +125,8 @@ ActiveRecord::Schema.define(version: 2021_09_23_084732) do
     t.string "name"
     t.string "image_id"
     t.string "business_day"
-    t.string "eat_in"
-    t.string "take_out"
+    t.boolean "eat_in"
+    t.boolean "take_out"
     t.string "budget"
     t.text "google_map_id"
     t.datetime "created_at", null: false
@@ -134,6 +134,8 @@ ActiveRecord::Schema.define(version: 2021_09_23_084732) do
     t.integer "area_id"
     t.integer "atmosphere_id"
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.integer "customer_id"
   end
 
 end
