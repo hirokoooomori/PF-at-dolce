@@ -1,2 +1,0 @@
-class ProsuctsController < ApplicationController
-end
