@@ -45,7 +45,7 @@
             <div>
               <a>営業日  <%= @shop.business_day %> / </a>
               <a>販売形式<a>  </a>
-                <%= @shop.eat_in == "1" ? "イートイン  " : "" %><%= @shop.take_out == "1" ? "テイクアウト" : "" %>
+                <%= @shop.eat_in ? "イートイン  " : "" %><%= @shop.take_out ? "テイクアウト" : "" %>
               </a>
               <a>予算  <%= @shop.budget %> / </a>
               <a>エリア  <%= @shop.area.name %> / </a>
