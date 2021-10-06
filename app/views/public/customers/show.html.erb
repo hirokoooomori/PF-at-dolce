@@ -47,7 +47,7 @@
                     <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
                     営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
                     販売形式
-                    <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %><br>
+                    <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in ? "イートイン  " : "" %><%= shop.take_out ? "テイクアウト" : "" %><br>
                     予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
                     エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
                     店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
@@ -75,7 +75,7 @@
                   <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
                   営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
                   販売形式
-                  <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in == "1" ? "イートイン  " : "" %><%= shop.take_out == "1" ? "テイクアウト" : "" %><br>
+                  <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in ? "イートイン  " : "" %><%= shop.take_out ? "テイクアウト" : "" %><br>
                   予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
                   エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
                   店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
