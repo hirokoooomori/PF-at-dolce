@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row">
     <h3 class="mt-5"><strong><font color="#4d4d4d">マイページ</font></strong></h3>
     <div class="col-md-3">
@@ -21,95 +20,86 @@
       <p>気になっている店舗数 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= @candidates.count %>件</p>
     </div>
   </div>
-
-
-    <div class="row mb-5">
-          <ul class="tab-list">
-            <li class="tab box-active">お気に入り <i class="fas fa-heart item" style="color: #66462b;"></i></li>
-            <li class="tab">気になっている <i class="fas fa-bookmark" style="color: #66462b;"></i></li>
-            <li class="tab">口コミ <i class="fas fa-comments" style="color: #66462b;"></i></li>
-          </ul>
-          <div class="tabbox-contents">
-            <div class="tabbox box-show" id="tab-favorites">
-              <% @favorites.each do |favorite| %>
-              <% shop = favorite.shop %>
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4">
-                    <p>
-                      <%= link_to shop_path(shop), class: "btn-link" do %>
-                        <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220", class: "img-fluid" %>
-                      <% end %>
-                    </p>
-                  </div>
-                  <div class="col-md-6">
-                    <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
-                    <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
-                    営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
-                    販売形式
-                    <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in ? "イートイン  " : "" %><%= shop.take_out ? "テイクアウト" : "" %><br>
-                    予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
-                    エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
-                    店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
-                  </div>
-                  </div>
-                </div>
-                <% end %>
+  <div class="row mb-5">
+    <ul class="tab-list">
+      <li class="tab box-active">お気に入り <i class="fas fa-heart item" style="color: #66462b;"></i></li>
+      <li class="tab">気になっている <i class="fas fa-bookmark" style="color: #66462b;"></i></li>
+      <li class="tab">口コミ <i class="fas fa-comments" style="color: #66462b;"></i></li>
+    </ul>
+    <div class="tabbox-contents">
+      <div class="tabbox box-show" id="tab-favorites">
+        <% @favorites.each do |favorite| %>
+        <% shop = favorite.shop %>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <p>
+                  <%= link_to shop_path(shop), class: "btn-link" do %>
+                    <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220", class: "img-fluid" %>
+                  <% end %>
+                </p>
               </div>
-
-
-            <div class="tabbox" id="tab-candidates">
-              <% @candidates.each do |candidate| %>
-              <% shop = candidate.shop %>
-              <div class="container">
-              <div class="row">
-                <div class="col-md-4">
-                  <p>
-                    <%= link_to shop_path(shop), class: "btn-link" do %>
-                      <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220", class: "img-fluid" %>
-                    <% end %>
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
-                  <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
-                  営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
-                  販売形式
-                  <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in ? "イートイン  " : "" %><%= shop.take_out ? "テイクアウト" : "" %><br>
-                  予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
-                  エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
-                  店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
-                </div>
-                </div>
-                </div>
-              <% end %>
-            </div>
-
-            <div class="tabbox" id="tab-comments">
-              <% @comments.each do |comment| %>
-              <div class="container">
-                <div class="row">
-                  <div class="comment-item p-5 my-4">
-                    <div class="col-md-4">
-                      <p><%= attachment_image_tag(comment, :image, size: "150x100") %></p>
-                    </div>
-                    <div class="col-md-8">
-                      <p><strong><%= comment.shop.name %></strong></p>
-                      <p><%= comment.comment %></p>
-                      <p><%= comment.created_at %></p>
-                      <p><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></p>
-                    </div>
-                  </div>
-                </div>
+              <div class="col-md-6">
+                <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
+                <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
+                営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
+                販売形式
+                <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in ? "イートイン  " : "" %><%= shop.take_out ? "テイクアウト" : "" %><br>
+                予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
+                エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
+                店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
               </div>
-              <% end %>
             </div>
-
           </div>
-
+        <% end %>
+      </div>
+      <div class="tabbox" id="tab-candidates">
+        <% @candidates.each do |candidate| %>
+        <% shop = candidate.shop %>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <p>
+                  <%= link_to shop_path(shop), class: "btn-link" do %>
+                    <%= attachment_image_tag shop, :image, format: 'jpeg', size: "320x220", class: "img-fluid" %>
+                  <% end %>
+                </p>
+              </div>
+              <div class="col-md-6">
+                <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
+                <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
+                営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
+                販売形式
+                <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.eat_in ? "イートイン  " : "" %><%= shop.take_out ? "テイクアウト" : "" %><br>
+                予算 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.budget %><br>
+                エリア <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.area.name %><br>
+                店舗ジャンル <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.atmosphere.atmosphere %><br>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="tabbox" id="tab-comments">
+        <% @comments.each do |comment| %>
+          <div class="container">
+            <div class="row">
+              <div class="comment-item p-5 my-4">
+                <div class="col-md-4">
+                  <p><%= attachment_image_tag(comment, :image, size: "150x100") %></p>
+                </div>
+                <div class="col-md-8">
+                  <p><strong><%= comment.shop.name %></strong></p>
+                  <p><%= comment.comment %></p>
+                  <p><%= comment.created_at %></p>
+                  <p><%= link_to "削除", shop_comment_path(comment.shop_id, comment.id), method: :delete %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-
+  </div>
 </div>
 
 <script>

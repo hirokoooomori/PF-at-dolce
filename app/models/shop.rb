@@ -1,6 +1,5 @@
 class Shop < ApplicationRecord
 
-#validates :status, presence: true
 validate :sales_format_validation
 
   has_many :candidates, dependent: :destroy
@@ -23,12 +22,12 @@ validate :sales_format_validation
     end
   end
 
-def favorited_by?(customer)
-  favorites.where(customer_id: customer.id).exists?
-end
+  def favorited_by?(customer)
+    favorites.where(customer_id: customer.id).exists?
+  end
 
-def candidated_by?(customer)
-  candidates.where(customer_id: customer.id).exists?
-end
+  def candidated_by?(customer)
+    candidates.where(customer_id: customer.id).exists?
+  end
 
 end
