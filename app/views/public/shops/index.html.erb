@@ -22,12 +22,15 @@
               <div class="col-md-6">
                 <div class="shop-detail">
                   <h5 class="shop-name"><strong>店名  <%= shop.name %></strong></h5>
-                  <div id="favorite_shop_<%= shop.id %>" class="favorite-candidate">
-                  <%= render 'favorite', shop: shop %>
-                  </div>
-                  <div id="candidate_shop_<%= shop.id %>" class="favorite-candidate">
-                    <%= render 'candidate', shop: shop %>
-                  </div>
+                  <% if customer_signed_in? %>
+                    <div id="favorite_shop_<%= shop.id %>" class="favorite-candidate">
+                    <%= render 'favorite', shop: shop %>
+                    </div>
+                    <div id="candidate_shop_<%= shop.id %>" class="favorite-candidate">
+                      <%= render 'candidate', shop: shop %>
+                    </div>
+                  <% else %>
+                  <% end %>
                   <div class="average-review-rating" data-score=<%= (shop.comments.average(:rate)) %>></div><%# average = 平均を計算 %>
                   営業日 <i class="fas fa-angle-right" style="color: #4d4d4d;"></i> <%= shop.business_day %><br>
                   販売形式

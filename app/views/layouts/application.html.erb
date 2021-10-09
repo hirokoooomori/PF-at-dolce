@@ -16,8 +16,8 @@
     </head>
     <header class="fixed-top">
      <div class="mx-3">
-      <nav class="navbar navbar-expand-md navbar-light fixed-top" >
-        <div class="nav navbar-nav navbar-left" >
+      <nav class="navbar navbar-expand-md navbar-light fixed-top mr-3" >
+        <div class="nav navbar-nav navbar-left ml-3" >
           <!--サイトロゴ-->
           <div class="logo">
             <a class="navbar-brand" href="#">
@@ -45,11 +45,13 @@
           </div>
         </div>
         <!--メニューバー-->
+        >
         <nav class="navbar" >
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         </nav>
+        
         <div class="collapse navbar-collapse m-2" id="navbarNav">
           <% if customer_signed_in? %>
             <ul class="navbar-nav ml-auto">
@@ -61,7 +63,7 @@
               <li class="nav-item" style="padding-left:0.5rem"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
             </ul>
           <% elsif admin_signed_in? %>
-          <div class="collapse navbar-collapse">
+          <div class="collapse navbar-collapse m-2" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item pr-2"><%= link_to "トップ", admin_homes_top_path, class: 'link'%></li>
               <li class="nav-item pr-2"><%= link_to "会員一覧", admin_customers_path, class: 'link'%></li>
@@ -72,7 +74,7 @@
             </ul>
           </div>
           <% else %>
-          <div class="collapse navbar-collapse">
+          <div class="collapse navbar-collapse m-2" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item"><%= link_to " 新規登録", new_customer_registration_path, class: 'link'%></li>
               <li class="nav-item"><%= link_to " ログイン", new_customer_session_path, class: 'link' %></li>
