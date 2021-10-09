@@ -2,9 +2,11 @@
 <html>
   <body>
     <head>
+      <meta charset="UTF-8">
       <title>AtDolce</title>
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
       <!-- bootstrapのバージョンを変えたらいらないコード begin -->
@@ -14,24 +16,21 @@
     </head>
     <header class="fixed-top">
      <div class="mx-3">
-      <nav class="navbar navbar-expand-md navbar-light" >
+      <nav class="navbar navbar-expand-md navbar-light fixed-top" >
         <div class="nav navbar-nav navbar-left" >
+          <!--サイトロゴ-->
           <div class="logo">
-          <% if admin_signed_in? %>
-            <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), admin_homes_top_path, class: "text-dark" %>
-          <% else %>
-            <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), root_path, class: "text-dark" %>
-          <% end %>
+            <a class="navbar-brand" href="#">
+              <% if admin_signed_in? %>
+                <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), admin_homes_top_path, class: "text-dark" %>
+              <% else %>
+                <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), root_path, class: "text-dark" %>
+              <% end %>
+            </a>
           </div>
-        </div>
-          <% if customer_signed_in? %>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "トップ", root_path, class: 'link'%></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "マイページ", customer_path(current_customer), class: 'link'%></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "店舗一覧", shops_path, class: 'link'%></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "FAQ",faqs_path, class: 'link' %></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
+          <!--検索フォーム-->
+          <div class="nav navbar-nav">
+            <% if customer_signed_in? %>
               <li class="nav-item form-inline" style="padding-left:0.5rem">
                 <%= form_with url: search_path, method: :get, local: true do |f| %>
                   <%= f.text_field 'search[value]', placeholder: "店舗名を入力" %>
@@ -42,6 +41,24 @@
                   </span>
                 <% end %>
               </li>
+            <% end %>
+          </div>
+        </div>
+        <!--メニューバー-->
+        <nav class="navbar" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        </nav>
+        <div class="collapse navbar-collapse m-2" id="navbarNav">
+          <% if customer_signed_in? %>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active" style="padding-left:0.5rem"><%= link_to "トップ", root_path, class: 'link'%></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "マイページ", customer_path(current_customer), class: 'link'%></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "店舗一覧", shops_path, class: 'link'%></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "FAQ",faqs_path, class: 'link' %></li>
+              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
             </ul>
           <% elsif admin_signed_in? %>
           <div class="collapse navbar-collapse">
@@ -63,9 +80,10 @@
           </div>
           <% end %>
         </nav>
+        </div>
       </div>
     </header>
-    <main >
+    <main>
       <% if flash[:notice] %>
         <div class="alert alert-primary text-center" role="alert"><strong><%= notice %></strong></div>
       <% end %>

@@ -16,6 +16,8 @@
 
 @import 'bootstrap';
 
+
+
 .heaedr_logo {
  //width: 300px;
  height: 40px;
@@ -24,15 +26,19 @@
 header {
   background-color: #986e4e;
   color: white;
-  height: 45px;
+  height: 75px;
+}
+
+.navbar-nav {
+  background-color: #986e4e;
+}
+
+.navbar {
+  background-color: #986e4e;
 }
 
 header nav.navbar {
   padding: 0;
-}
-
-.logo {
-  height: 45px;
 }
 
 .link {
@@ -41,7 +47,7 @@ header nav.navbar {
 }
 
 main {
-  padding-top: 45px;
+  padding-top: 75px;
   height: 100%;
   position: relative;
 }
@@ -74,3 +80,4 @@ body {
   padding-bottom: 60px;
   box-sizing: border-box;
 }
+
