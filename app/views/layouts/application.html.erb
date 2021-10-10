@@ -15,75 +15,76 @@
       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     </head>
     <header class="fixed-top">
-     <div class="mx-3">
-      <nav class="navbar navbar-expand-md navbar-light fixed-top" >
-        <div class="nav navbar-nav navbar-left" >
-          <!--サイトロゴ-->
-          <div class="logo">
-            <a class="navbar-brand" href="#">
-              <% if admin_signed_in? %>
-                <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), admin_homes_top_path, class: "text-dark" %>
-              <% else %>
-                <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), root_path, class: "text-dark" %>
-              <% end %>
-            </a>
-          </div>
-          <!--検索フォーム-->
-          <div class="nav navbar-nav">
-            <% if customer_signed_in? %>
-              <li class="nav-item form-inline" style="padding-left:0.5rem">
-                <%= form_with url: search_path, method: :get, local: true do |f| %>
-                  <%= f.text_field 'search[value]', placeholder: "店舗名を入力" %>
-                  <span class="search-button text-right">
-                    <%= f.button :type => "search", style: 'border-style: none;', class: "search-button btn-outline-secondary" do %>
-                      <i class="fas fa-search"></i>
-                    <% end %>
-                  </span>
+      <div class="mx-3">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top pr-3" >
+          <div class="nav navbar-nav navbar-left ml-3" >
+            <!--サイトロゴ-->
+            <div class="logo">
+              <a class="navbar-brand" href="#">
+                <% if admin_signed_in? %>
+                  <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), admin_homes_top_path, class: "text-dark" %>
+                <% else %>
+                  <%= link_to image_tag("ロゴ.JPG", class:"heaedr_logo"), root_path, class: "text-dark" %>
                 <% end %>
-              </li>
+              </a>
+            </div>
+            <!--検索フォーム-->
+            <div class="nav navbar-nav">
+              <% if customer_signed_in? %>
+                <li class="nav-item form-inline" style="padding-left:0.5rem">
+                  <%= form_with url: search_path, method: :get, local: true do |f| %>
+                    <%= f.text_field 'search[value]', placeholder: "店舗名を入力" %>
+                    <span class="search-button text-right">
+                      <%= f.button :type => "search", style: 'border-style: none;', class: "search-button btn-outline-secondary" do %>
+                        <i class="fas fa-search"></i>
+                      <% end %>
+                    </span>
+                  <% end %>
+                </li>
+              <% end %>
+            </div>
+          </div>
+          <!--メニューバー-->
+          <nav class="navbar pt-2" >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </nav>
+          <div class="collapse navbar-collapse p-2" id="navbarNav">
+            <% if customer_signed_in? %>
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active" style="padding-left:0.5rem"><%= link_to "トップ", root_path, class: 'link'%></li>
+                <li class="nav-item" style="padding-left:0.5rem"><%= link_to "マイページ", customer_path(current_customer), class: 'link'%></li>
+                <li class="nav-item" style="padding-left:0.5rem"><%= link_to "店舗一覧", shops_path, class: 'link'%></li>
+                <li class="nav-item" style="padding-left:0.5rem"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
+                <li class="nav-item" style="padding-left:0.5rem"><%= link_to "FAQ",faqs_path, class: 'link' %></li>
+                <li class="nav-item" style="padding-left:0.5rem"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
+              </ul>
+            <% elsif admin_signed_in? %>
+            <div class="collapse navbar-collapse p-2" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item pr-2"><%= link_to "トップ", admin_homes_top_path, class: 'link'%></li>
+                <li class="nav-item pr-2"><%= link_to "会員一覧", admin_customers_path, class: 'link'%></li>
+                <li class="nav-item pr-2"><%= link_to "店舗管理", admin_shops_path, class: 'link' %></li>
+                <li class="nav-item pr-2"><%= link_to "ジャンル管理", admin_genres_path, class: 'link' %></li>
+                <li class="nav-item pr-2"><%= link_to "お問い合わせ確認", admin_contacts_path, class: 'link' %></li>
+                <li class="nav-item pr-2"><%= link_to "ログアウト", admins_sign_out_path, method: :delete, class: 'link'%></li>
+              </ul>
+            </div>
+            <% else %>
+            <div class="collapse navbar-collapse p-2" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item pr-2"><%= link_to " 新規登録", new_customer_registration_path, class: 'link'%></li>
+                <li class="nav-item pr-2"><%= link_to " ログイン", new_customer_session_path, class: 'link' %></li>
+              </ul>
+            </div>
             <% end %>
           </div>
-        </div>
-        <!--メニューバー-->
-        <nav class="navbar" >
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         </nav>
-        <div class="collapse navbar-collapse m-2" id="navbarNav">
-          <% if customer_signed_in? %>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active" style="padding-left:0.5rem"><%= link_to "トップ", root_path, class: 'link'%></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "マイページ", customer_path(current_customer), class: 'link'%></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "店舗一覧", shops_path, class: 'link'%></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "お問い合わせ",new_contact_path, class: 'link' %></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "FAQ",faqs_path, class: 'link' %></li>
-              <li class="nav-item" style="padding-left:0.5rem"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'link' %></li>
-            </ul>
-          <% elsif admin_signed_in? %>
-          <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item pr-2"><%= link_to "トップ", admin_homes_top_path, class: 'link'%></li>
-              <li class="nav-item pr-2"><%= link_to "会員一覧", admin_customers_path, class: 'link'%></li>
-              <li class="nav-item pr-2"><%= link_to "店舗管理", admin_shops_path, class: 'link' %></li>
-              <li class="nav-item pr-2"><%= link_to "ジャンル管理", admin_genres_path, class: 'link' %></li>
-              <li class="nav-item pr-2"><%= link_to "お問い合わせ確認", admin_contacts_path, class: 'link' %></li>
-              <li class="nav-item pr-2"><%= link_to "ログアウト", admins_sign_out_path, method: :delete, class: 'link'%></li>
-            </ul>
-          </div>
-          <% else %>
-          <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><%= link_to " 新規登録", new_customer_registration_path, class: 'link'%></li>
-              <li class="nav-item"><%= link_to " ログイン", new_customer_session_path, class: 'link' %></li>
-            </ul>
-          </div>
-          <% end %>
-        </nav>
-        </div>
       </div>
     </header>
     <main>
+      
       <% if flash[:notice] %>
         <div class="alert alert-primary text-center" role="alert"><strong><%= notice %></strong></div>
       <% end %>

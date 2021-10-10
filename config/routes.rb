@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   end
 
 
+
   scope module: :public do
     get 'homes/top'
     post 'homes/top' => 'homes#top'
