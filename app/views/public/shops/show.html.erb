@@ -77,7 +77,7 @@
       </div>
       <div class="tabbox">
         <div class="m-5">
-        <% if customer_signed_in? %> 
+        <% if customer_signed_in? %>
           <%= form_with model:[@shop, @comment], local: true do |f| %>
           <p>
             <div>画像選択</div>
@@ -99,6 +99,7 @@
           </p>
           <% end %>
         <% else %>
+          <font class="m-3" color="#5A3E26">新規登録後はレビューやマイページが利用できるようになります</font>
         <% end %>
         <% @shop.comments.each do |comment| %>
           <div class="comment-item p-1 m-2">
