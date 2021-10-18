@@ -1,5 +1,14 @@
 class Public::CustomersController < ApplicationController
 
+  def create
+    @customer = Blog.new(blog_params)
+    if @blog.save
+      redirect_to blog_path(@blog.id)
+    else
+      render :new
+    end
+  end
+  
   def show
     @customer = Customer.find(params[:id])
     @comments = @customer.comments.order("created_at DESC")
