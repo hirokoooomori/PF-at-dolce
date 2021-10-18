@@ -15,7 +15,6 @@
 
 //= require jquery
 //= require jquery.raty.js
-//= require jquery_ujs
 //= require_tree .
 
 // require_tree .で最終的に全部を読み込む
