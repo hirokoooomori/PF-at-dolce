@@ -13,7 +13,7 @@
           <% end %>
         </div>
         <div class="m-2">
-          <%= form_with model:  @contact, url: back_path, local: true do |f| %>
+          <%= form_with model:  @contact, url: back_contacts_path, local: true do |f| %>
             <%= f.hidden_field :name %>
             <%= f.hidden_field :message %>
             <%= f.submit '入力画面に戻る', class: "confirm-return-button" %>

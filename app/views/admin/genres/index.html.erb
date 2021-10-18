@@ -13,13 +13,19 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>エリア</th>
+                      <th><strong>エリア</strong></th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
                     <% @areas.each do |area| %>
                     <tr>
                       <td><u><%= link_to area.name, admin_genres_path, class: "text-dark" %></u></td>
+                      <td>
+                        <%= link_to admin_genre_path(area.id), method: :delete, data: {confirm: 'ジャンルの項目を削除します'} do %>
+                        <i class="fas fa-times" style="color: #5A3E26;"></i>
+                        <% end %>
+                      </td>
                     </tr>
                     <% end %>
                   </tbody>
@@ -36,7 +42,7 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>雰囲気</th>
+                  <th><strong>雰囲気</strong></th>
                 </tr>
               </thead>
               <tbody>

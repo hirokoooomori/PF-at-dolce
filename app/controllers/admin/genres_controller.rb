@@ -28,6 +28,10 @@ class Admin::GenresController < ApplicationController
       redirect_to request.referer
     end
   end
+  
+  def destroy
+    
+  end
 
 end
 

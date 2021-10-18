@@ -4,8 +4,4 @@ class Public::FaqsController < ApplicationController
     @faqs =Faq.all
   end
 
-  def new
-    @faq = Faq.new
-  end
-
 end
