@@ -15,34 +15,12 @@
           </h3>
           <div class="shop-item">
             <% if customer_signed_in? %>
-              <% if @shop.favorited_by?(current_customer) %>
-                <p class="fav-inline" style="color: #5A3E26">
-                  <% favorite = @shop.favorites.find_by(customer_id: current_customer.id) %>
-                  <%= link_to shop_favorite_path(@shop.id, favorite.id), method: :delete do %>
-                    <i class="fas fa-heart" style="color: #cc6666;"></i><font color="#cc6666"><%= @shop.favorites.count %></font>
-                  <% end %>
-                </p>
-              <% else %>
-                <p class="fav-inline">
-                  <%= link_to shop_favorites_path(@shop), method: :post do %>
-                    <i class="far fa-heart" style="color: #cc6666;"></i><font color="#cc6666"><%= @shop.favorites.count %></font>
-                  <% end %>
-                </p>
-              <% end %>
-              <% if @shop.candidated_by?(current_customer) %>
-                <p class="fav-inline">
-                  <% candidate = @shop.candidates.find_by(customer_id: current_customer.id) %>
-                  <%= link_to shop_candidate_path(@shop.id, candidate.id), method: :delete do %>
-                    <i class="fas fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= @shop.candidates.count %></font>
-                  <% end %>
-                </p>
-              <% else %>
-                <p class="fav-inline">
-                  <%= link_to shop_candidates_path(@shop), method: :post do %>
-                    <i class="far fa-bookmark" style="color: #5A3E26;"></i><font color="#5A3E26"><%= @shop.candidates.count %></font>
-                  <% end %>
-                </p>
-              <% end %>
+              <div id="favorite_shop_<%= @shop.id %>" class="favorite-candidate">
+              <%= render 'favorite', shop: @shop %>
+              </div>
+              <div id="candidate_shop_<%= @shop.id %>" class="favorite-candidate">
+                <%= render 'candidate', shop: @shop %>
+              </div>
             <% else %>
             <% end %>
             <div>
