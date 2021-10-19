@@ -22,7 +22,7 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.customer_id = current_customer.id
     if @contact.save
-      redirect_to done_path
+      redirect_to done_contacts_path
     else
       render :new
     end
