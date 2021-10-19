@@ -17,23 +17,13 @@ class Admin::GenresController < ApplicationController
     if params[:area].present?
       @area = Area.new(area_params)
       @area.save
-    redirect_to request.referer
+      redirect_to request.referer
     elsif params[:atmosphere].present?
       @atmosphere = Atmosphere.new(atmosphere_params)
       @atmosphere.save
       redirect_to request.referer
-    else
-      @genre = Genre.new(genre_params)
-      @genre.save
-      redirect_to request.referer
     end
   end
-  
-  def destroy
-    
-  end
-
-end
 
   private
 
@@ -50,4 +40,4 @@ end
     params.require(:genre).permit(:name)
   end
 
-
+end
