@@ -41,5 +41,4 @@ class Admin::FaqsController < ApplicationController
       params.require(:faq).permit(:frequently, :question, :admin_id, :contact_id)
     end
 
-
 end

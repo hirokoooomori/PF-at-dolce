@@ -28,10 +28,10 @@ class Public::CustomersController < ApplicationController
   def quit
   end
 
-private
-
-def customer_params
-  params.require(:customer).permit(:email, :image, :name)
-end
+  private
+  
+  def customer_params
+    params.require(:customer).permit(:email, :image, :name)
+  end
 
 end
