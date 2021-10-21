@@ -27,7 +27,6 @@ class Admin::GenresController < ApplicationController
 
   private
 
-
   def area_params
     params.require(:area).permit(:name)
   end
