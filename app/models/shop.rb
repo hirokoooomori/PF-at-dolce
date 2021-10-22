@@ -1,5 +1,4 @@
 class Shop < ApplicationRecord
-
 validate :sales_format_validation
 
   has_many :candidates, dependent: :destroy
@@ -29,5 +28,4 @@ validate :sales_format_validation
   def candidated_by?(customer)
     candidates.where(customer_id: customer.id).exists?
   end
-
 end
