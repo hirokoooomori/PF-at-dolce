@@ -19,22 +19,4 @@ class Customer < ApplicationRecord
   has_many :favorite_shops, through: :favorites, source: :shop
 
   attachment :image
-
-  # def own?(object)
-  #   id == object.customer_id
-  # end
-
-  # def favorite(shop)
-  #   favorites.find_or_create_by(shop: shop)
-  # end
-
-  # def like?(shop)
-  #   favorite_shops.include?(shop)
-  # end
-
-
-
-  # def unlike(shop)
-  #   favorite_posts.delete(shop)
-  # end
 end
